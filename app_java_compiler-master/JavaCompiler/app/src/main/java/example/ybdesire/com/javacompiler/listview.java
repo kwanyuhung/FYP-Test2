@@ -1,0 +1,43 @@
+package example.ybdesire.com.javacompiler;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class listview extends AppCompatActivity {
+
+    public String[] str = {"1)intro","2)test","3)print hello world","4)test","5)test2"};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_listview);
+
+        ListView LV = (ListView) findViewById(R.id.LV);
+        //ListView 要顯示的內容
+
+        //android.R.layout.simple_list_item_1 為內建樣式，還有其他樣式可自行研究
+        ArrayAdapter adapter = new ArrayAdapter(this,  android.R.layout.simple_list_item_1, str);
+        LV.setAdapter(adapter);
+        LV.setOnItemClickListener(onClickListView);
+    }
+
+
+    private AdapterView.OnItemClickListener onClickListView = new AdapterView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // Toast 快顯功能 第三個參數 Toast.LENGTH_SHORT 2秒  LENGTH_LONG 5秒
+            Toast.makeText(listview.this,"點選第 "+(position +1) +" 個 \n內容："+str[position], Toast.LENGTH_SHORT).show();
+            openListView();
+        }
+    };
+
+    public  void openListView(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+}
