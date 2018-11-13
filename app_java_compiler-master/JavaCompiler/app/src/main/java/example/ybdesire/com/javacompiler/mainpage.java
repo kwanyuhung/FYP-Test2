@@ -1,28 +1,27 @@
 package example.ybdesire.com.javacompiler;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import org.w3c.dom.Text;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
-
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
-
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.*;
-
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Activity;
@@ -34,7 +33,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -43,22 +41,108 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-/*public class mainpage extends AppCompatActivity {
+import android.os.StrictMode;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    private Button button;
+public class mainpage extends AppCompatActivity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mainpage);
+
+        findViews();
+        setListeners();
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
+                .penaltyLog()
+                .build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
+    }
+
+    private Button button_get_record;
+
+    private void findViews() {
+        button_get_record = (Button)findViewById(R.id.get_record);
+    }
+
+    private void setListeners() {
+        button_get_record.setOnClickListener(getDBRecord);
+    }
+
+    private Button.OnClickListener getDBRecord = new Button.OnClickListener() {
+        public void onClick(View v) {
+            TextView TV;
+            TV = (TextView) findViewById(R.id.String_output);
+
+            // TODO Auto-generated method stub
+            TableLayout user_list = (TableLayout)findViewById(R.id.user_list);
+            user_list.setStretchAllColumns(true);
+            TableLayout.LayoutParams row_layout = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
+            TableRow.LayoutParams view_layout = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
+
+            try {
+                String result = DBConnector.executeQuery("SELECT * FROM animals");
+                TV.setText(result);
+                /*
+                    SQL 結果有多筆資料時使用JSONArray
+                    只有一筆資料時直接建立JSONObject物件
+                    JSONObject jsonData = new JSONObject(result);
+                */
+                JSONArray jsonArray = new JSONArray(result);
+                for(int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject jsonData = jsonArray.getJSONObject(i);
+                    TableRow tr = new TableRow(mainpage.this);
+                    tr.setLayoutParams(row_layout);
+                    tr.setGravity(Gravity.CENTER_HORIZONTAL);
+
+                    TextView user_acc = new TextView(mainpage.this);
+                    user_acc.setText(jsonData.getString("name"));
+                    user_acc.setLayoutParams(view_layout);
+
+                    /*TextView user_pwd = new TextView(mainpage.this);
+                    user_pwd.setText(jsonData.getString("pwd"));
+                    user_pwd.setLayoutParams(view_layout);*/
+
+                    tr.addView(user_acc);
+                    //tr.addView(user_pwd);
+                    user_list.addView(tr);
+                }
+            } catch(Exception e) {
+                Log.e("log_tag", e.toString());
+            }
+        }
+    };
+
+
+/*    private Button button;
     private TextView TV;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +163,9 @@ import pub.devrel.easypermissions.EasyPermissions;
     public  void openListView(){
         Intent intent = new Intent(this,listview.class);
         startActivity(intent);
-    }
-}*/
+    }*/
+}
+/*
 public class mainpage extends AppCompatActivity
         implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
@@ -97,10 +182,12 @@ public class mainpage extends AppCompatActivity
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { SheetsScopes.SPREADSHEETS_READONLY };
 
-    /**
+    */
+/**
      * Create the main activity.
      * @param savedInstanceState previously saved instance data.
-     */
+     *//*
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,13 +238,15 @@ public class mainpage extends AppCompatActivity
 
 
 
-    /**
+    */
+/**
      * Attempt to call the API, after verifying that all the preconditions are
      * satisfied. The preconditions are: Google Play Services installed, an
      * account was selected and the device currently has online access. If any
      * of the preconditions are not satisfied, the app will prompt the user as
      * appropriate.
-     */
+     *//*
+
     private void getResultsFromApi() {
         if (! isGooglePlayServicesAvailable()) {
             acquireGooglePlayServices();
@@ -170,7 +259,8 @@ public class mainpage extends AppCompatActivity
         }
     }
 
-    /**
+    */
+/**
      * Attempts to set the account used with the API credentials. If an account
      * name was previously saved it will use that one; otherwise an account
      * picker dialog will be shown to the user. Note that the setting the
@@ -179,7 +269,8 @@ public class mainpage extends AppCompatActivity
      * present. The AfterPermissionGranted annotation indicates that this
      * function will be rerun automatically whenever the GET_ACCOUNTS permission
      * is granted.
-     */
+     *//*
+
     @AfterPermissionGranted(REQUEST_PERMISSION_GET_ACCOUNTS)
     private void chooseAccount() {
         if (EasyPermissions.hasPermissions(
@@ -205,7 +296,8 @@ public class mainpage extends AppCompatActivity
         }
     }
 
-    /**
+    */
+/**
      * Called when an activity launched here (specifically, AccountPicker
      * and authorization) exits, giving you the requestCode you started it with,
      * the resultCode it returned, and any additional data from it.
@@ -214,7 +306,8 @@ public class mainpage extends AppCompatActivity
      *     activity result.
      * @param data Intent (containing result data) returned by incoming
      *     activity result.
-     */
+     *//*
+
     @Override
     protected void onActivityResult(
             int requestCode, int resultCode, Intent data) {
@@ -253,14 +346,16 @@ public class mainpage extends AppCompatActivity
         }
     }
 
-    /**
+    */
+/**
      * Respond to requests for permissions at runtime for API 23 and above.
      * @param requestCode The request code passed in
      *     requestPermissions(android.app.Activity, String, int, String[])
      * @param permissions The requested permissions. Never null.
      * @param grantResults The grant results for the corresponding permissions
      *     which is either PERMISSION_GRANTED or PERMISSION_DENIED. Never null.
-     */
+     *//*
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
@@ -270,34 +365,40 @@ public class mainpage extends AppCompatActivity
                 requestCode, permissions, grantResults, this);
     }
 
-    /**
+    */
+/**
      * Callback for when a permission is granted using the EasyPermissions
      * library.
      * @param requestCode The request code associated with the requested
      *         permission
      * @param list The requested permission list. Never null.
-     */
+     *//*
+
     @Override
     public void onPermissionsGranted(int requestCode, List<String> list) {
         // Do nothing.
     }
 
-    /**
+    */
+/**
      * Callback for when a permission is denied using the EasyPermissions
      * library.
      * @param requestCode The request code associated with the requested
      *         permission
      * @param list The requested permission list. Never null.
-     */
+     *//*
+
     @Override
     public void onPermissionsDenied(int requestCode, List<String> list) {
         // Do nothing.
     }
 
-    /**
+    */
+/**
      * Checks whether the device currently has a network connection.
      * @return true if the device has a network connection, false otherwise.
-     */
+     *//*
+
     private boolean isDeviceOnline() {
         ConnectivityManager connMgr =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -305,11 +406,13 @@ public class mainpage extends AppCompatActivity
         return (networkInfo != null && networkInfo.isConnected());
     }
 
-    /**
+    */
+/**
      * Check that Google Play services APK is installed and up to date.
      * @return true if Google Play Services is available and up to
      *     date on this device; false otherwise.
-     */
+     *//*
+
     private boolean isGooglePlayServicesAvailable() {
         GoogleApiAvailability apiAvailability =
                 GoogleApiAvailability.getInstance();
@@ -318,10 +421,12 @@ public class mainpage extends AppCompatActivity
         return connectionStatusCode == ConnectionResult.SUCCESS;
     }
 
-    /**
+    */
+/**
      * Attempt to resolve a missing, out-of-date, invalid or disabled Google
      * Play Services installation via a user dialog, if possible.
-     */
+     *//*
+
     private void acquireGooglePlayServices() {
         GoogleApiAvailability apiAvailability =
                 GoogleApiAvailability.getInstance();
@@ -333,12 +438,14 @@ public class mainpage extends AppCompatActivity
     }
 
 
-    /**
+    */
+/**
      * Display an error dialog showing that Google Play Services is missing
      * or out of date.
      * @param connectionStatusCode code describing the presence (or lack of)
      *     Google Play Services on this device.
-     */
+     *//*
+
     void showGooglePlayServicesAvailabilityErrorDialog(
             final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
@@ -349,10 +456,12 @@ public class mainpage extends AppCompatActivity
         dialog.show();
     }
 
-    /**
+    */
+/**
      * An asynchronous task that handles the Google Sheets API call.
      * Placing the API calls in their own task ensures the UI stays responsive.
-     */
+     *//*
+
     private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
         private com.google.api.services.sheets.v4.Sheets mService = null;
         private Exception mLastError = null;
@@ -366,10 +475,12 @@ public class mainpage extends AppCompatActivity
                     .build();
         }
 
-        /**
+        */
+/**
          * Background task to call Google Sheets API.
          * @param params no parameters needed for this task.
-         */
+         *//*
+
         @Override
         protected List<String> doInBackground(Void... params) {
             try {
@@ -381,12 +492,14 @@ public class mainpage extends AppCompatActivity
             }
         }
 
-        /**
+        */
+/**
          * Fetch a list of names and majors of students in a sample spreadsheet:
          * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
          * @return List of names and majors
          * @throws IOException
-         */
+         *//*
+
         private List<String> getDataFromApi() throws IOException {
             String spreadsheetId = "10EJkicpoF5PVFNgDUU_0HmFWH-lIA4LCE-dqcFxpc44";
             String range = "FYP!A2:F";
@@ -444,4 +557,4 @@ public class mainpage extends AppCompatActivity
             }
         }
     }
-}
+}*/
