@@ -64,6 +64,14 @@ import org.json.JSONObject;
 
 public class mainpage extends AppCompatActivity {
 
+    private Button Golearn;
+    private TextView TV;
+
+    public  void openListView(){
+        Intent intent = new Intent(this,listview.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +91,15 @@ public class mainpage extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+
+        Golearn = (Button) findViewById(R.id.learnnow);
+        Golearn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openListView();
+            }
+        });
+
     }
 
     private Button button_get_record;
