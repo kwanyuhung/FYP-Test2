@@ -58,12 +58,13 @@ public class listview extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Toast 快顯功能 第三個參數 Toast.LENGTH_SHORT 2秒  LENGTH_LONG 5秒
             Toast.makeText(listview.this,"點選第 "+(position +1) +" 個 \n內容："+str[position], Toast.LENGTH_SHORT).show();
-            openListView();
+            openListView(String.valueOf(position+1));
         }
     };
 
-    public  void openListView(){
-        Intent intent = new Intent(this,MainActivity.class);
+    public  void openListView(String post){
+        Intent intent = new Intent(this,Tutorial.class);
+        intent.putExtra("tutorial",post);
         startActivity(intent);
     }
 }

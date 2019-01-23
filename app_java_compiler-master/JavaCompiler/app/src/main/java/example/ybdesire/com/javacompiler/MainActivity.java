@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private String Question = "Null";
+    private TextView Q;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +82,25 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Question = extras.getString("Qustion");
+            //The key argument here must match that used in the other activity
+        }
+
+
+        Q = (TextView) findViewById(R.id.excise);
+
+        try {
+            String result = DBConnector.executeQuery("SELECT fyp.excise FROM user.fyp where id = " + Question);
+            JSONArray jsonArray = new JSONArray(result);
+            JSONObject jsonData = jsonArray.getJSONObject(0);
+            Q.setText(jsonData.getString("excise"));
+        } catch(Exception e) {
+            Log.e("log_tag", e.toString());
+        }
+
 
 
         //Edit Text

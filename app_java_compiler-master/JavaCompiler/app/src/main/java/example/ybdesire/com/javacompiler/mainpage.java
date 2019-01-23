@@ -140,7 +140,7 @@ public class mainpage extends AppCompatActivity {
                     tr.setGravity(Gravity.CENTER_HORIZONTAL);
 
                     TextView user_acc = new TextView(mainpage.this);
-                    user_acc.setText(jsonData.getString("name"));
+                    user_acc.setText(jsonData.getString("name "));
                     user_acc.setLayoutParams(view_layout);
 
                     /*TextView user_pwd = new TextView(mainpage.this);
