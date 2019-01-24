@@ -4,4 +4,7 @@
     <string name="str_txt_output">Output</string>
     <string name="err_network">Network Exception</string>
     <string name="title_activity_tutorial">tutorial</string>
+    <string name="question">Question</string>
+    <string name="tab">Tab</string>
+    <string name="println">println</string>
 </resources>

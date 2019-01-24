@@ -72,6 +72,17 @@ public class MainActivity extends AppCompatActivity {
     private String Question = "Null";
     private TextView Q;
 
+
+    public  void checkAnswer(String answer){
+        try {
+            String result = DBConnector.executeQuery("SELECT fyp.note FROM user.fyp where id = " + getinlistview);
+            JSONArray jsonArray = new JSONArray(result);
+            JSONObject jsonData = jsonArray.getJSONObject(0);
+        } catch(Exception e) {
+            Log.e("log_tag", e.toString());
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,6 +194,9 @@ public class MainActivity extends AppCompatActivity {
                                     System.out.println("outoutotuotutouto123456    "+JoutputJ.toString());
                                     TextView txtOutput=findViewById(R.id.txt_output);
                                     setText(txtOutput,JoutputJ.toString());
+
+
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -196,53 +210,6 @@ public class MainActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            ///////////////////////////////not use
-                            //Your code goes here
-                            /*String code = editText.getText().toString();
-                            String url = "https://www.jdoodle.com/online-java-compiler";
-                            HttpClient httpclient = new DefaultHttpClient();
-                            HttpPost httppost = new HttpPost(url);
-                            // Add your data
-                            List<NameValuePair> nameValuePairs = new ArrayList< NameValuePair >(5);
-                            nameValuePairs.add(new BasicNameValuePair("source", code));
-                            nameValuePairs.add(new BasicNameValuePair("input", "0"));
-
-                            try {
-                                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-
-                                Log.d("myapp", "works till here. 2");
-                                try {
-                                    HttpResponse response = httpclient.execute(httppost);
-                                    String responseBody = EntityUtils.toString(response.getEntity());
-                                    TextView txtOutput=findViewById(R.id.txt_output);//find output label by id
-                                    setText(txtOutput,responseBody);
-                                    Log.d("myapp", "response " + responseBody);
-                                } catch (ClientProtocolException e) {
-                                    e.printStackTrace();
-                                    TextView txtOutput=findViewById(R.id.txt_output);//find output label by id
-                                    setText(txtOutput,getString(R.string.err_network));
-
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                    TextView txtOutput=findViewById(R.id.txt_output);//find output label by id
-                                    setText(txtOutput,getString(R.string.err_network));
-                                    Log.d("shit", "2222222222222222222222222222222222222222222");
-                                }
-                            } catch (UnsupportedEncodingException e) {
-                                e.printStackTrace();
-                                TextView txtOutput=findViewById(R.id.txt_output);//find output label by id
-                                setText(txtOutput,getString(R.string.err_network));
-                                Log.d("shit", "333333333333333333333333333333333333333333333");
-                            }
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            TextView txtOutput=findViewById(R.id.txt_output);//find output label by id
-
-                            txtOutput.setText(getString(R.string.err_network));
-                            Log.d("shit", "44444444444444444444444444444444444444444444");
-                        }*/
                     }
                 });
 
