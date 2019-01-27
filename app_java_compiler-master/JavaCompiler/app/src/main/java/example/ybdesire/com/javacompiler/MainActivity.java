@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
                         String clientSecret = "64d5319179ab4d1ae770f77f5719466720cbbf20e13ec317111c47583e979d35"; //Replace with your client Secret
                         String text = editText.getText().toString();
                         String script = Tojson(text);
-                        System.out.println("out equal   999999999999999999999 " + script);
                         String language = "java";
                         String versionIndex = "2";
                         try {
@@ -168,8 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
                             String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script +
                                     "\",\"language\":\"" + language + "\",\"versionIndex\":\"" + versionIndex + "\"} ";
-
-                            System.out.println("input123123123213123123123123    "+input);
 
                             OutputStream outputStream = connection.getOutputStream();
                             outputStream.write(input.getBytes());
@@ -243,11 +240,7 @@ public class MainActivity extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int start, int count, int after) {
-                //Log.d("onTextChanged", "onTextChanged,str_len="+cs.toString().length());
-                //Log.d("onTextChanged", "start="+start);
-                //Log.d("onTextChanged", "str="+cs.toString().substring(start,start+1));
-                //Log.d("onTextChanged", "count="+count);
-                //Log.d("onTextChanged", "after"+after);
+                
 
                 if(cs.toString().substring(start,start+1).equals(" "))
                 {
