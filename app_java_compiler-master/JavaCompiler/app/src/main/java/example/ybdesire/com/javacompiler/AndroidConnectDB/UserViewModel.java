@@ -10,7 +10,7 @@ public class UserViewModel extends AndroidViewModel {
 
     private UserRepository mRepository;
 
-    private LiveData<List<User_DataBase>> mAllUsers;
+    private LiveData<List<User>> mAllUsers;
 
     public UserViewModel (Application application) {
         super(application);
@@ -18,7 +18,7 @@ public class UserViewModel extends AndroidViewModel {
         mAllUsers = mRepository.getAllWords();
     }
 
-    LiveData<List<User_DataBase>> getAllWords() { return mAllUsers; }
+    LiveData<List<User>> getAllWords() { return mAllUsers; }
 
-    public void insert(User_DataBase word) { mRepository.insert(word); }
+    public void insert(User word) { mRepository.insert(word); }
 }

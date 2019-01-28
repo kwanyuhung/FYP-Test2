@@ -1,12 +1,13 @@
 package example.ybdesire.com.javacompiler.AndroidConnectDB;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.Query;
+
 
 @Dao
 public interface UserDao {
@@ -15,15 +16,15 @@ public interface UserDao {
     // Always holds/caches latest version of data. Notifies its active observers when the
     // data has changed. Since we are getting all the contents of the database,
     // we are notified whenever any of the database contents have changed.
-    @Query("SELECT * from User_table ORDER BY User_DataBase ASC")
-    LiveData<List<User_DataBase>> getAlphabetizedWords();
+    @Query("SELECT * from user_table ORDER BY user ASC")
+    LiveData<List<User>> getAlphabetizedWords();
 
     // We do not need a conflict strategy, because the word is our primary key, and you cannot
     // add two items with the same primary key to the database. If the table has more than one
     // column, you can use @Insert(onConflict = OnConflictStrategy.REPLACE) to update a row.
     @Insert
-    void insert(User_DataBase user_dataBase);
+    void insert(User user);
 
-    @Query("DELETE FROM User_table")
+    @Query("DELETE FROM USER_TABLE")
     void deleteAll();
 }

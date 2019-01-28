@@ -6,30 +6,27 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
-import androidx.room.RoomDatabase;
-
-public class UserRepository {
+class UserRepository {
 
 
     private UserDao mUserDao;
-    private LiveData<List<User_DataBase>> mAllUsers;
+    private LiveData<List<User>> mAllUsers;
 
     UserRepository(Application application) {
-        UserRoom_DataBase db = UserRoom_DataBase.getDatabase(application);
-        mUserDao = db.UserDao();
-        mAllUsers = mUserDao.getAllWords();
+        UserRoomDatabase db = UserRoomDatabase.getDatabase(application);
+        mUserDao = db.userDao();
+        mAllUsers = mUserDao.getAlphabetizedWords();
     }
 
-    LiveData<List<User_DataBase>> getAllWords() {
+    LiveData<List<User>> getAllWords() {
         return mAllUsers;
     }
 
-
-    public void insert (User_DataBase user_dataBase) {
-        new insertAsyncTask(mUserDao).execute(user_dataBase);
+    void insert (User user) {
+        new insertAsyncTask(mUserDao).execute(user);
     }
 
-    private static class insertAsyncTask extends AsyncTask<User_DataBase, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
 
         private UserDao mAsyncTaskDao;
 
@@ -38,8 +35,8 @@ public class UserRepository {
         }
 
         @Override
-        protected Void doInBackground(final User_DataBase... user_dataBases) {
-            mAsyncTaskDao.insert(params[0]);
+        protected Void doInBackground(final User... user) {
+            mAsyncTaskDao.insert(user[0]);
             return null;
         }
     }
