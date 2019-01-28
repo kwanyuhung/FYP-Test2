@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Tutorial"></activity>
-        <activity android:name=".listview" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".mainpage">
+        <activity android:name=".Tutorial_Page" />
+        <activity android:name=".Excises_Java_Compiler" />
+        <activity android:name=".Front_Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

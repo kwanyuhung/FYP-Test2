@@ -3,4 +3,8 @@
     <string name="str_btn_run">Courir</string>
     <string name="str_txt_output">Résultats de sortie</string>
     <string name="err_network">Réseau anormal</string>
+    <string name="title_activity_tutorial">tutorial</string>
+    <string name="question">Question</string>
+    <string name="tab">Tab</string>
+    <string name="println">println</string>
 </resources>

@@ -1,24 +1,19 @@
 package example.ybdesire.com.javacompiler;
 
 import android.content.Intent;
-import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class listview extends AppCompatActivity {
+public class Tutorial_Page extends AppCompatActivity {
 
     //public String[] str = {"1)intro","2)test","3)print hello world","4)test","5)test2"};
     public String[] str;
@@ -57,7 +52,7 @@ public class listview extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Toast 快顯功能 第三個參數 Toast.LENGTH_SHORT 2秒  LENGTH_LONG 5秒
-            Toast.makeText(listview.this,"點選第 "+(position +1) +" 個 \n內容："+str[position], Toast.LENGTH_SHORT).show();
+            Toast.makeText(Tutorial_Page.this,"點選第 "+(position +1) +" 個 \n內容："+str[position], Toast.LENGTH_SHORT).show();
             openListView(String.valueOf(position+1));
         }
     };

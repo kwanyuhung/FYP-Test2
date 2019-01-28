@@ -1,8 +1,10 @@
 package example.ybdesire.com.javacompiler;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -17,13 +19,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
-public class DBConnector {
-    public static String executeQuery(String query_string) {
+class DBConnector {
+    static String executeQuery(String query_string) {
         String result = "";
+
 
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://192.168.64.2/AndroidConnectDB/android_connect_db.php");
+            HttpPost httpPost = new HttpPost("http://192.168.0.108/AndroidConnectDB/android_connect_db.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("query_string", query_string));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
@@ -36,7 +39,7 @@ public class DBConnector {
             StringBuilder builder = new StringBuilder();
             String line = null;
             while((line = bufReader.readLine()) != null) {
-                builder.append(line + "\n");
+                builder.append(line).append("\n");
             }
             inputStream.close();
             result = builder.toString();

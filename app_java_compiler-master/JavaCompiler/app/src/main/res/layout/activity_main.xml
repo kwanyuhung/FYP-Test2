@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="example.ybdesire.com.javacompiler.MainActivity">
+    tools:context="example.ybdesire.com.javacompiler.Excises_Java_Compiler">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="152dp"
         android:gravity="center"
         android:text="@string/question"
-        android:textSize="26dp" />
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/button_tab"
