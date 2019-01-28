@@ -1,18 +1,13 @@
 package example.ybdesire.com.javacompiler;
 
 import android.content.Intent;
-import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -47,7 +42,7 @@ public class listview extends AppCompatActivity {
         ListView LV = (ListView) findViewById(R.id.LV);
         //ListView 要顯示的內容
         //android.R.layout.simple_list_item_1 為內建樣式，還有其他樣式可自行研究
-        ArrayAdapter adapter = new ArrayAdapter(this,  android.R.layout.simple_list_item_1, str);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,  android.R.layout.simple_list_item_1, str);
         LV.setAdapter(adapter);
         LV.setOnItemClickListener(onClickListView);
     }

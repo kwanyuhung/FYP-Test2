@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             T= T.replaceAll("\n","");
             T= T.replaceAll("\"","\\\\\"");
         }
-        System.out.println("thiahtiahtia 7777777777777777   "+T);
         return T;
     }
 
@@ -70,12 +69,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String Question = "Null";
-    private TextView Q;
 
 
     public  void checkAnswer(String answer){
         try {
-            String result = DBConnector.executeQuery("SELECT fyp.note FROM user.fyp where id = " + getinlistview);
+            String result = DBConnector.executeQuery("SELECT fyp.note FROM user.fyp where id = " );//+ getinlistview);
             JSONArray jsonArray = new JSONArray(result);
             JSONObject jsonData = jsonArray.getJSONObject(0);
         } catch(Exception e) {
@@ -86,13 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       /* //AdMob
-        MobileAds.initialize(this, "ca-app-pub-8100413825150401/1420343090");
-        AdView mAdView;
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        setContentView(R.layout.activity_excises);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -101,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Q = (TextView) findViewById(R.id.excise);
+        TextView q = (TextView) findViewById(R.id.excise);
 
         try {
             String result = DBConnector.executeQuery("SELECT fyp.excise FROM user.fyp where id = " + Question);
             JSONArray jsonArray = new JSONArray(result);
             JSONObject jsonData = jsonArray.getJSONObject(0);
-            Q.setText(jsonData.getString("excise"));
+            q.setText(jsonData.getString("excise"));
         } catch(Exception e) {
             Log.e("log_tag", e.toString());
         }
@@ -162,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
                             connection.setDoOutput(true);
                             connection.setRequestMethod("POST");
                             connection.setRequestProperty("Content-Type", "application/json");
-                            System.out.println("66666666666666666666666666666666666666");
 
 
                             String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script +
@@ -181,14 +172,11 @@ public class MainActivity extends AppCompatActivity {
                                     (connection.getInputStream())));
 
                             String output;
-                            System.out.println("Output from JDoodle .... \n");
                             while ((output = bufferedReader.readLine()) != null) {
-                                System.out.println("output1232131123    "+output);
                                 JSONObject Jsonparam;
                                 try {
                                     Jsonparam = new JSONObject(output);
                                     Object JoutputJ = Jsonparam.get("output");
-                                    System.out.println("outoutotuotutouto123456    "+JoutputJ.toString());
                                     TextView txtOutput=findViewById(R.id.txt_output);
                                     setText(txtOutput,JoutputJ.toString());
 

@@ -3,4 +3,8 @@
     <string name="str_btn_run">运行</string>
     <string name="str_txt_output">输出结果</string>
     <string name="err_network">网络异常</string>
+    <string name="title_activity_tutorial">tutorial</string>
+    <string name="question">Question</string>
+    <string name="tab">Tab</string>
+    <string name="println">println</string>
 </resources>
