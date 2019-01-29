@@ -11,4 +11,8 @@
     <string name="cancel">Cancel</string>
     <string name="login">login</string>
     <string name="password">Password</string>
+    <string name="Login">Login</string>
+    <string name="userpassword">UserPassword</string>
+    <string name="username">UserName</string>
+    <string name="not_have_account">Not have Account?</string>
 </resources>

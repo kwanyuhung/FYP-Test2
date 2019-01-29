@@ -5,7 +5,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "example.ybdesire.com.javacompiler"
-        minSdkVersion 15
+        minSdkVersion 20
         targetSdkVersion 26
         versionCode 3
         versionName "3.0"

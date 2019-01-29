@@ -16,9 +16,6 @@ import android.widget.TableRow;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 public class Front_Page extends AppCompatActivity {
 
     private TextView TV;
@@ -34,7 +31,7 @@ public class Front_Page extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainpage);
+        setContentView(R.layout.activity_front_page);
 
 
         findViews();
