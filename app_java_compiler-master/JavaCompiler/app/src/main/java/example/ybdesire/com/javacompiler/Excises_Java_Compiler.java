@@ -25,6 +25,8 @@ import org.json.*;
 
 public class Excises_Java_Compiler extends AppCompatActivity {
 
+    private boolean questionClick = false;
+
     public  String Tojson(String T){
         if(T!=null){
             T= T.replaceAll("\n","");
@@ -74,13 +76,26 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         }
 
 
-        TextView q = (TextView) findViewById(R.id.excise);
+        final TextView question = (TextView) findViewById(R.id.excise);
+
+        question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(questionClick){
+                    question.setHeight(question.getHeight()+200);
+                    questionClick = false;
+                }else {
+                    question.setHeight(question.getHeight()-200);
+                    questionClick = true;
+                }
+            }
+        });
 
         try {
             String result = DBConnector.executeQuery("SELECT fyp.excise FROM user.fyp where id = " + Question);
             JSONArray jsonArray = new JSONArray(result);
             JSONObject jsonData = jsonArray.getJSONObject(0);
-            q.setText(jsonData.getString("excise"));
+            question.setText(jsonData.getString("excise"));
         } catch(Exception e) {
             Log.e("log_tag", e.toString());
         }

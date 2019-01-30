@@ -1,0 +1,95 @@
+{
+  "animals": [
+    {
+      "id": "1",
+      "name": "dog"
+    },
+    {
+      "id": "2",
+      "name": "cat"
+    },
+    {
+      "id": "3",
+      "name": "penguin"
+    },
+    {
+      "id": "4",
+      "name": "lax"
+    },
+    {
+      "id": "5",
+      "name": "whale"
+    },
+    {
+      "id": "6",
+      "name": "ostrich"
+    }
+  ],
+  "fyp": [
+    {
+      "id": "1",
+      "Tutorial": "Print",
+      "note": "Declare a class with name A.\\r\\nDeclare the main method public static void main(String args[]){\\r\\nNow Type the System.out.println(\\\"Hello World\\\"); which displays the text Hello World.",
+      "excise": "now try to print the \\\"hello is me\\\" in the output",
+      "tips": "you may change the world between println(\\\"//you world here//\\\");",
+      "ans": "hello is me"
+    },
+    {
+      "id": "2",
+      "Tutorial": "Basic Syntax",
+      "note": "test2",
+      "excise": "",
+      "tips": "",
+      "ans": ""
+    },
+    {
+      "id": "3",
+      "Tutorial": "Object and Classes",
+      "note": "test3",
+      "excise": "",
+      "tips": "",
+      "ans": ""
+    },
+    {
+      "id": "4",
+      "Tutorial": "Constructors",
+      "note": "tes4",
+      "excise": "",
+      "tips": "",
+      "ans": ""
+    },
+    {
+      "id": "5",
+      "Tutorial": "Basic Datatypes",
+      "note": "tes5",
+      "excise": "",
+      "tips": "",
+      "ans": ""
+    },
+    {
+      "id": "6",
+      "Tutorial": "Variable Types",
+      "note": "test6",
+      "excise": "",
+      "tips": "",
+      "ans": ""
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "account": "meme",
+      "pwd": "afd"
+    },
+    {
+      "id": "0",
+      "account": "qrjk",
+      "pwd": "helloworld"
+    },
+    {
+      "id": "2",
+      "account": "admin",
+      "pwd": "admin"
+    }
+  ]
+}

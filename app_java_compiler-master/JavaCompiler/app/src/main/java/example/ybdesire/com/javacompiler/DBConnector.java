@@ -53,7 +53,6 @@ public class DBConnector {
     static Boolean Login(String userName,String userPassword){
         boolean susses = false;
         String User = executeQuery("SELECT account,pwd FROM user GROUP BY account");
-
         return susses;
     }
 }
