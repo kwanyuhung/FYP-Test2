@@ -15,13 +15,17 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import org.json.*;
+
+import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 
 public class Excises_Java_Compiler extends AppCompatActivity {
 
@@ -32,7 +36,6 @@ public class Excises_Java_Compiler extends AppCompatActivity {
             T= T.replaceAll("\n","");
             T= T.replaceAll("\"","\\\\\"");
         }
-        System.out.println("thiahtiahtia 7777777777777777   "+T);
         return T;
     }
 
@@ -45,7 +48,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         });
     }
 
-    private String Question = "Null";
+    private int Question = 0;
 
 
     public  void checkAnswer(String answer){
@@ -71,7 +74,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Question = extras.getString("Qustion");
+            Question = extras.getInt("Qustion");
             //The key argument here must match that used in the other activity
         }
 
@@ -91,16 +94,26 @@ public class Excises_Java_Compiler extends AppCompatActivity {
             }
         });
 
+
+
+
+        InputStream inputStream = null;
         try {
-            String result = DBConnector.executeQuery("SELECT fyp.excise FROM user.fyp where id = " + Question);
-            JSONArray jsonArray = new JSONArray(result);
-            JSONObject jsonData = jsonArray.getJSONObject(0);
-            question.setText(jsonData.getString("excise"));
-        } catch(Exception e) {
-            Log.e("log_tag", e.toString());
+            inputStream = getAssets().open("user_db.json");
+            InputStreamReader streamReader = new InputStreamReader(inputStream);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String json_toString = new String(buffer, "UTF-8");
+
+            List<String> Tutorial = Json_Data_Get.FindNote(json_toString);
+
+            question.setText(Tutorial.get(Question));
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
 
         //Edit Text
         final AppCompatEditText editText = (AppCompatEditText) findViewById(R.id.text_input_code);

@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 
@@ -88,32 +89,6 @@ public class Front_Page extends AppCompatActivity {
             TableLayout.LayoutParams row_layout = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
             TableRow.LayoutParams view_layout = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
 
-//            try {
-//                String result = DBConnector.executeQuery("SELECT * FROM animals");
-//                TV.setText(result);
-//                /*
-//                    SQL 結果有多筆資料時使用JSONArray
-//                    只有一筆資料時直接建立JSONObject物件
-//                    JSONObject jsonData = new JSONObject(result);
-//                */
-//                JSONArray jsonArray = new JSONArray(result);
-//                for (int i = 0; i < jsonArray.length(); i++) {
-//
-//                    JSONObject jsonData = jsonArray.getJSONObject(i);
-//                    TableRow tr = new TableRow(Front_Page.this);
-//                    tr.setLayoutParams(row_layout);
-//                    tr.setGravity(Gravity.CENTER_HORIZONTAL);
-//
-//                    TextView user_acc = new TextView(Front_Page.this);
-//                    user_acc.setText(jsonData.getString("name "));
-//                    user_acc.setLayoutParams(view_layout);
-//
-//                    tr.addView(user_acc);
-//                    user_list.addView(tr);
-//                }
-//            } catch (Exception e) {
-//                Log.e("log_tag", e.toString());
-//            }
 
             InputStream inputStream = null;
             try {
@@ -124,22 +99,11 @@ public class Front_Page extends AppCompatActivity {
                 inputStream.read(buffer);
                 inputStream.close();
                 String json_toSring = new String(buffer, "UTF-8");
-                try {
-                    JSONObject person = new JSONObject(json_toSring);
-                    JSONArray infArray = person.getJSONArray("animals");
-                    String[] result = new String[infArray.length()];
-                    for (int i = 0; i < infArray.length(); i++) {
-                        JSONObject inf_Array = infArray.getJSONObject(i);
-                        result[i] = inf_Array.toString();
-                        Log.e("read ","find header"+ result[i]);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+                List<String> Tutorial = Json_Data_Get.FindTutorial(json_toSring);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //String[] data = Json_Data_Get.JsonFileRead("header", inputStream);
 
         }
     };

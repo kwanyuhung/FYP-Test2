@@ -3,15 +3,18 @@ package example.ybdesire.com.javacompiler;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 
 public class Tutorial_Page extends AppCompatActivity {
 
@@ -22,22 +25,26 @@ public class Tutorial_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turtorial);
-        String result = DBConnector.executeQuery("SELECT Tutorial FROM user.fyp");
 
+
+        InputStream inputStream = null;
         try {
+            inputStream = getAssets().open("user_db.json");
+            InputStreamReader streamReader = new InputStreamReader(inputStream);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String json_toSring = new String(buffer, "UTF-8");
 
-            JSONArray jsonArray = new JSONArray(result);
-            str = new String[jsonArray.length()];
-            for(int i = 0; i < jsonArray.length(); i++) {
+            List<String> Tutorial = Json_Data_Get.FindTutorial(json_toSring);
 
-                JSONObject jsonData = jsonArray.getJSONObject(i);
-                jsonData.getString("Tutorial");
+            str = Json_Data_Get.ToArray(Tutorial);
 
-                str[i] = i+1 +" )"+jsonData.getString("Tutorial");
-            }
-        } catch(Exception e) {
-            Log.e("log_tag", e.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
         ListView LV = (ListView) findViewById(R.id.LV);
         //ListView 要顯示的內容
@@ -52,13 +59,13 @@ public class Tutorial_Page extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Toast 快顯功能 第三個參數 Toast.LENGTH_SHORT 2秒  LENGTH_LONG 5秒
-            Toast.makeText(Tutorial_Page.this,"點選第 "+(position +1) +" 個 \n內容："+str[position], Toast.LENGTH_SHORT).show();
-            openListView(String.valueOf(position+1));
+            Toast.makeText(Tutorial_Page.this,"點選第 "+(position +1) +" 個 \n內容："+position, Toast.LENGTH_SHORT).show();
+            openListView(position);
         }
     };
 
-    public  void openListView(String post){
-        Intent intent = new Intent(this,Tutorial.class);
+    public  void openListView(int post){
+        Intent intent = new Intent(this, Note_Page.class);
         intent.putExtra("tutorial",post);
         startActivity(intent);
     }
