@@ -53,6 +53,15 @@
         android:text="@string/not_have_account"
         android:textSize="15sp" />
 
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@id/create_user"
+        android:layout_centerHorizontal="true"
+        android:text="Status"/>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login_button"
         android:layout_width="match_parent"

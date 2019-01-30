@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
@@ -20,6 +21,8 @@ public class Tutorial_Page extends AppCompatActivity {
 
     //public String[] str = {"1)intro","2)test","3)print hello world","4)test","5)test2"};
     public String[] str;
+    public List<Boolean> clear = new ArrayList <Boolean>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,7 @@ public class Tutorial_Page extends AppCompatActivity {
             String json_toSring = new String(buffer, "UTF-8");
 
             List<String> Tutorial = Json_Data_Get.FindTutorial(json_toSring);
-
+            clear = Json_Data_Get.FindClear(json_toSring);
             str = Json_Data_Get.ToArray(Tutorial);
 
         } catch (IOException e) {
@@ -49,7 +52,8 @@ public class Tutorial_Page extends AppCompatActivity {
         ListView LV = (ListView) findViewById(R.id.LV);
         //ListView 要顯示的內容
         //android.R.layout.simple_list_item_1 為內建樣式，還有其他樣式可自行研究
-        ArrayAdapter <String> adapter = new ArrayAdapter <>(this,  android.R.layout.simple_list_item_1, str);
+        ArrayAdapter <String> adapter = new ArrayAdapter <>(this,  android.R.layout.simple_expandable_list_item_1, str);
+
         LV.setAdapter(adapter);
         LV.setOnItemClickListener(onClickListView);
     }

@@ -7,7 +7,7 @@
     tools:context=".Front_Page">
 
     <Button
-        android:id="@+id/get_record"
+        android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -15,10 +15,24 @@
         android:layout_marginLeft="31dp"
         android:layout_marginTop="91dp"
         android:layout_marginBottom="18dp"
-        android:text="getdata"
+        android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/user_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Gen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginBottom="18dp"
+        android:text="Gen"
+        app:layout_constraintBottom_toTopOf="@+id/user_list"
+        app:layout_constraintLeft_toRightOf="@id/Login" />
+
 
     <TextView
         android:id="@+id/String_output"
@@ -45,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/get_record" />
+        app:layout_constraintTop_toBottomOf="@+id/Login" />
 
 
     <Button

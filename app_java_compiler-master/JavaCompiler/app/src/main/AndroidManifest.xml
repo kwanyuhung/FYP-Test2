@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".JsonFile.Json_Data_Get" />
+        <activity android:name=".View.View_Gen_Example" />
     </application>
 
 </manifest>

@@ -24,6 +24,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
+import example.ybdesire.com.javacompiler.View.View_Gen_Example;
+import example.ybdesire.com.javacompiler.View.View_Login_Page;
 
 public class Front_Page extends AppCompatActivity {
 
@@ -31,6 +33,16 @@ public class Front_Page extends AppCompatActivity {
 
     public void openListView() {
         Intent intent = new Intent(this, Tutorial_Page.class);
+        startActivity(intent);
+    }
+    public void login(){
+        //go to login
+        Intent intent = new Intent(this, View_Login_Page.class);
+        startActivity(intent);
+    }
+
+    public void Gen(){
+        Intent intent = new Intent(this, View_Gen_Example.class);
         startActivity(intent);
     }
 
@@ -66,12 +78,20 @@ public class Front_Page extends AppCompatActivity {
             }
         });
 
+        Button gen = (Button) findViewById(R.id.Gen);
+        golearn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gen();
+            }
+        });
+
     }
 
     private Button button_get_record;
 
     private void findViews() {
-        button_get_record = (Button) findViewById(R.id.get_record);
+        button_get_record = (Button) findViewById(R.id.Login);
     }
 
     private void setListeners() {
@@ -83,28 +103,14 @@ public class Front_Page extends AppCompatActivity {
             TextView TV;
             TV = (TextView) findViewById(R.id.String_output);
 
-            // TODO Auto-generated method stub
+           /* // TODO Auto-generated method stub
             TableLayout user_list = (TableLayout) findViewById(R.id.user_list);
             user_list.setStretchAllColumns(true);
             TableLayout.LayoutParams row_layout = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
             TableRow.LayoutParams view_layout = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
+            */
 
-
-            InputStream inputStream = null;
-            try {
-                inputStream = getAssets().open("user_db.json");
-                InputStreamReader streamReader = new InputStreamReader(inputStream);
-                int size = inputStream.available();
-                byte[] buffer = new byte[size];
-                inputStream.read(buffer);
-                inputStream.close();
-                String json_toSring = new String(buffer, "UTF-8");
-
-                List<String> Tutorial = Json_Data_Get.FindTutorial(json_toSring);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            login();
         }
     };
 }

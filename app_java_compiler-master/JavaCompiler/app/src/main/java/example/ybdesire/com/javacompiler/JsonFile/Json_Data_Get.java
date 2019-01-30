@@ -19,6 +19,28 @@ import java.util.List;
 public  class Json_Data_Get{
 
 
+    public static boolean CheckLogin(String Json,String id,String pw){
+
+        String userID;
+        String userPw;
+
+        try {
+            JSONObject person = new JSONObject(Json);
+            JSONArray infArray = person.getJSONArray("user");
+            for (int i = 0; i < infArray.length(); i++) {
+                JSONObject inf_Array = infArray.getJSONObject(i);
+                userID = inf_Array.getString("account");
+                userPw = inf_Array.getString("account");
+                if(userID.equals(id) && userPw.equals(pw)){
+                    return true;
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
    public static List<String> FindTutorial(String Json){
 
@@ -77,6 +99,24 @@ public  class Json_Data_Get{
         return fyp;
     }
 
+    public static List<Boolean> FindClear(String Json){
+
+        List<Boolean> fyp = new ArrayList <>();
+
+        try {
+            JSONObject person = new JSONObject(Json);
+            JSONArray infArray = person.getJSONArray("fyp");
+            for (int i = 0; i < infArray.length(); i++) {
+                JSONObject inf_Array = infArray.getJSONObject(i);
+                Boolean child_Array = inf_Array.getBoolean("clear");
+                fyp.add(child_Array);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return fyp;
+    }
 
 
    public static String[] ToArray(List<String> List){
