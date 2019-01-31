@@ -10,14 +10,7 @@ import java.util.Random;
 
 import example.ybdesire.com.javacompiler.R;
 
-public class View_Gen_Example  extends AppCompatActivity {
-
-
-
-
-
-    private AppCompatTextView shape;
-    private AppCompatTextView cal;
+public class View_Gen_Example extends AppCompatActivity {
 
 
     @Override
@@ -26,28 +19,28 @@ public class View_Gen_Example  extends AppCompatActivity {
         setContentView(R.layout.activity_gen_question);
 
 
-        shape = (AppCompatTextView)findViewById(R.id.shape);
-        cal = (AppCompatTextView)findViewById(R.id.cal);
+        AppCompatTextView shape = (AppCompatTextView) findViewById(R.id.shape);
+        AppCompatTextView cal = (AppCompatTextView) findViewById(R.id.cal);
 
         Random r = new Random();
         char c = (char)(r.nextInt(26) + 'a');
 
         //rect
-        int width = r.nextInt(6) + 5; // 5 -10
-        int height = r.nextInt(6) +5;
+        int width = r.nextInt(6) +5; // 5 -10
+        int height = r.nextInt(6)+5;
 
-        String Rect = "";
+        StringBuilder Rect = new StringBuilder();
 
         for (int w = 1; w <= width; w++)
         {
             for (int h = 1; h <= height; h++)
             {
-                Rect.concat(String.valueOf(c));
+                Rect.append(String.valueOf(c));
             }
-            Rect.concat("\n");
+            Rect.append("\n");
         }
 
-        shape.setText(Rect);
+        shape.setText(Rect.toString());
 
     }
 }

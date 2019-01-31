@@ -79,7 +79,7 @@ public class Front_Page extends AppCompatActivity {
         });
 
         Button gen = (Button) findViewById(R.id.Gen);
-        golearn.setOnClickListener(new View.OnClickListener() {
+        gen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Gen();
