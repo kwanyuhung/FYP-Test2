@@ -1,30 +1,4 @@
 {
-  "animals": [
-    {
-      "id": "1",
-      "name": "dog"
-    },
-    {
-      "id": "2",
-      "name": "cat"
-    },
-    {
-      "id": "3",
-      "name": "penguin"
-    },
-    {
-      "id": "4",
-      "name": "lax"
-    },
-    {
-      "id": "5",
-      "name": "whale"
-    },
-    {
-      "id": "6",
-      "name": "ostrich"
-    }
-  ],
   "fyp": [
     {
       "id": "1",
@@ -33,7 +7,14 @@
       "excise": "now try to print the \"hello is me\" in the output",
       "tips": "you may change the world between println(\"//you world here//\");",
       "ans": "hello is me",
-      "clear":false
+      "clear": false,
+      "MultipleChoice": {
+        "question": "If i want to print out [I Love OU FYP], what i should do?",
+        "1": "System(ILoveOUFYP).out.print",
+        "2": "System.print.out(\"ILoveOUFYP\")",
+        "3": "System.out.print(\"ILoveOUFYP\")",
+        "answer":3
+      }
     },
     {
       "id": "2",
@@ -42,7 +23,7 @@
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear":true
+      "clear": true
     },
     {
       "id": "3",
@@ -51,7 +32,7 @@
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear":false
+      "clear": false
     },
     {
       "id": "4",
@@ -60,7 +41,7 @@
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear":false
+      "clear": false
     },
     {
       "id": "5",
@@ -69,7 +50,7 @@
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear":false
+      "clear": false
     },
     {
       "id": "6",
@@ -78,7 +59,7 @@
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear":false
+      "clear": false
     }
   ],
   "user": [
