@@ -26,6 +26,7 @@ import java.util.List;
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 import example.ybdesire.com.javacompiler.View.View_Gen_Example;
 import example.ybdesire.com.javacompiler.View.View_Login_Page;
+import example.ybdesire.com.javacompiler.View.View_MC_Question;
 
 public class Front_Page extends AppCompatActivity {
 
@@ -43,6 +44,11 @@ public class Front_Page extends AppCompatActivity {
 
     public void Gen(){
         Intent intent = new Intent(this, View_Gen_Example.class);
+        startActivity(intent);
+    }
+
+    public void MChoice(){
+        Intent intent = new Intent(this, View_MC_Question.class);
         startActivity(intent);
     }
 
@@ -74,7 +80,7 @@ public class Front_Page extends AppCompatActivity {
         golearn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openListView();
+                login();
             }
         });
 
@@ -83,6 +89,14 @@ public class Front_Page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Gen();
+            }
+        });
+
+        Button MC = (Button) findViewById(R.id.MC);
+        MC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MChoice();
             }
         });
 
@@ -100,8 +114,8 @@ public class Front_Page extends AppCompatActivity {
 
     private Button.OnClickListener getDBRecord = new Button.OnClickListener() {
         public void onClick(View v) {
-            TextView TV;
-            TV = (TextView) findViewById(R.id.String_output);
+            //TextView TV;
+            //TV = (TextView) findViewById(R.id.String_output);
 
            /* // TODO Auto-generated method stub
             TableLayout user_list = (TableLayout) findViewById(R.id.user_list);

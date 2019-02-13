@@ -7,4 +7,6 @@
     <string name="question">Question</string>
     <string name="tab">Tab</string>
     <string name="println">println</string>
+    <string name="score">Score</string>
+    <string name="quit">quit</string>
 </resources>

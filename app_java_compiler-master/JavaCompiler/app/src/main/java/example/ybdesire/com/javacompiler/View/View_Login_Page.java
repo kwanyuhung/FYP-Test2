@@ -1,7 +1,9 @@
 package example.ybdesire.com.javacompiler.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +22,7 @@ import java.util.List;
 import example.ybdesire.com.javacompiler.DBConnector;
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 import example.ybdesire.com.javacompiler.R;
+import example.ybdesire.com.javacompiler.Tutorial_Page;
 
 public class View_Login_Page extends AppCompatActivity {
 
@@ -31,6 +35,11 @@ public class View_Login_Page extends AppCompatActivity {
     private AppCompatTextView create_user;
 
     private AppCompatButton login_button;
+
+    public void openListView() {
+        Intent intent = new Intent(this, Tutorial_Page.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +81,13 @@ public class View_Login_Page extends AppCompatActivity {
                         boolean checkLogin = Json_Data_Get.CheckLogin(json_toSring,user_id.getEditableText().toString(),user_pw.getEditableText().toString());
                         if(checkLogin){
                             status.setText("Login success");
+                            Toast.makeText(View_Login_Page.this,"Login success",Toast.LENGTH_SHORT).show();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    openListView();
+                                }
+                            }, 1000);
                         }else {
                             status.setText("Login Fail");
                         }

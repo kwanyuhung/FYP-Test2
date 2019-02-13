@@ -22,8 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JsonFile.Json_Data_Get" />
+        <!--<activity android:name=".JsonFile.Json_Data_Get" />-->
         <activity android:name=".View.View_Gen_Example" />
+        <activity android:name=".View.View_MC_Question" />
     </application>
 
 </manifest>

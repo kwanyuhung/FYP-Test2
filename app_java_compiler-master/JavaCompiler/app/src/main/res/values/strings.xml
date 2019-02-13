@@ -15,4 +15,6 @@
     <string name="userpassword">UserPassword</string>
     <string name="username">UserName</string>
     <string name="not_have_account">Not have Account?</string>
+    <string name="score">Score</string>
+    <string name="quit">quit</string>
 </resources>

@@ -27,6 +27,12 @@ public class Note_Page extends AppCompatActivity {
 
         setContentView(R.layout.activity_note);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            getInListView = extras.getInt("tutorial");
+            //The key argument here must match that used in the other activity
+        }
+
 
         TextView note = (TextView) findViewById(R.id.tur);
 
