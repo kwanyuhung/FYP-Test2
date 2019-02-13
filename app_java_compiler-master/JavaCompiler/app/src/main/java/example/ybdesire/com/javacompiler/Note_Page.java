@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
+import example.ybdesire.com.javacompiler.View.View_MC_Question;
 
 public class Note_Page extends AppCompatActivity {
 
@@ -20,6 +21,10 @@ public class Note_Page extends AppCompatActivity {
     public String[] str;
     private int getInListView = 0;
 
+    public void MChoice(){
+        Intent intent = new Intent(this, View_MC_Question.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +62,13 @@ public class Note_Page extends AppCompatActivity {
         }
 
 
-
+        Button gomuitplechoice = (Button)findViewById(R.id.MC);
+        gomuitplechoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MChoice();
+            }
+        });
 
         Button goExcise = (Button) findViewById(R.id.excisenow);
         goExcise.setOnClickListener(new View.OnClickListener() {

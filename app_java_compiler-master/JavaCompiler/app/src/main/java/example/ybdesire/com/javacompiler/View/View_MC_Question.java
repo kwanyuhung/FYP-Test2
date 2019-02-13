@@ -32,6 +32,8 @@ public class View_MC_Question extends AppCompatActivity {
     private int mScore = 0;
     private int mQuestionNumber =0;
 
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
