@@ -70,7 +70,7 @@ public class Note_Page extends AppCompatActivity {
             }
         });
 
-        Button goExcise = (Button) findViewById(R.id.excisenow);
+        Button goExcise = (Button) findViewById(R.id.exercise_now);
         goExcise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

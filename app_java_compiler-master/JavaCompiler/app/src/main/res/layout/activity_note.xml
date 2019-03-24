@@ -6,22 +6,29 @@
     tools:context=".Note_Page">
 
 
-    <android.support.v7.widget.AppCompatTextView
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/tur"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="413dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--tools:text="Tur"-->
+        <!--android:textColor="#000000"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_margin="20dp"/>-->
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/tur"
         android:layout_width="match_parent"
-        android:layout_height="413dp"
-        android:gravity="center_vertical"
-        tools:text="Tur"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:layout_margin="20dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        />
 
 
     <Button
-        android:id="@+id/excisenow"
+        android:id="@+id/exercise_now"
         android:layout_width="134dp"
         android:layout_height="55dp"
-        android:text="excise"
+        android:text="exercise"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
