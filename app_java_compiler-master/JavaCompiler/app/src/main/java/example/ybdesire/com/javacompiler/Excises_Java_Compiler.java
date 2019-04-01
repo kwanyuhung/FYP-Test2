@@ -97,20 +97,9 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
 
 
-        InputStream inputStream = null;
         try {
-            inputStream = getAssets().open("user_db.json");
-            InputStreamReader streamReader = new InputStreamReader(inputStream);
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            String json_toString = new String(buffer, "UTF-8");
-
-            List<String> Tutorial = Json_Data_Get.FindNote(json_toString);
-
+            List<String> Tutorial = Json_Data_Get.get("note",getAssets().open("user_db.json"));
             question.setText(Tutorial.get(Question));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,7 +151,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                             connection.setDoOutput(true);
                             connection.setRequestMethod("POST");
-                            connection.setRequestProperty("Content-Type", "application/json");
+                            connection.setRequestProperty("Content-Type", "application/Utils_Access");
 
 
                             String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script +

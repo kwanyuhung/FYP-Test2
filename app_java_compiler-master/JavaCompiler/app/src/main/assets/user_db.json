@@ -3,7 +3,10 @@
     {
       "id": "1",
       "Tutorial": "Print",
-      "note": "Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World.",
+      "note": {
+        "note_text":"Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World.",
+        "note_image":"R.drawable.pet"
+      },
       "excise": "now try to print the \"hello is me\" in the output",
       "tips": "you may change the world between println(\"//you world here//\");",
       "ans": "hello is me",

@@ -22,9 +22,14 @@
         android:layout_marginEnd="10dp"
         android:background="@color/colorPrimary"
         android:hint="@string/username"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
         android:paddingStart="10dp"
+        android:singleLine="true"
+        android:textColor="#DDDDDD"
         android:textColorHint="#DDDDDD"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/user_pw"
@@ -36,9 +41,14 @@
         android:layout_marginEnd="10dp"
         android:background="@color/colorPrimary"
         android:hint="@string/userpassword"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
         android:paddingStart="10dp"
+        android:singleLine="true"
+        android:textColor="#DDDDDD"
         android:textColorHint="#DDDDDD"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/create_user"
@@ -54,21 +64,22 @@
         android:textSize="15sp" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:visibility="gone"
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_below="@id/create_user"
         android:layout_centerHorizontal="true"
-        android:text="Status"/>
+        android:text="Status"
+        android:textSize="30sp" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:text="@string/login"
         android:textColor="#FFFFFF"

@@ -1,5 +1,7 @@
 package example.ybdesire.com.javacompiler.JsonFile;
 
+import android.content.res.AssetManager;
+import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -13,10 +15,44 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class Json_Data_Get{
+import example.ybdesire.com.javacompiler.Json.Utils_Access;
+
+public abstract class Json_Data_Get extends Utils_Access {
+
+    public static List<String> get(String json_value, InputStream inputStream){
+        String json_toSring = null;
+        try {
+//            inputStream = getAssets().open("user_db.json");
+            InputStreamReader streamReader = new InputStreamReader(inputStream);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json_toSring = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> fyp = new ArrayList <>();
+
+        try {
+            JSONObject person = new JSONObject(json_toSring);
+            JSONArray infArray = person.getJSONArray("fyp");
+            for (int i = 0; i < infArray.length(); i++) {
+                JSONObject inf_Array = infArray.getJSONObject(i);
+                String child_Array = inf_Array.getString(json_value);
+                fyp.add(child_Array);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return fyp;
+    }
 
 
     public static boolean CheckLogin(String Json,String id,String pw){

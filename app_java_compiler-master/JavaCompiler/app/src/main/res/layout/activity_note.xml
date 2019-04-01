@@ -6,18 +6,9 @@
     tools:context=".Note_Page">
 
 
-    <!--<android.support.v7.widget.AppCompatTextView-->
-        <!--android:id="@+id/tur"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="413dp"-->
-        <!--android:gravity="center_vertical"-->
-        <!--tools:text="Tur"-->
-        <!--android:textColor="#000000"-->
-        <!--android:textSize="18sp"-->
-        <!--android:layout_margin="20dp"/>-->
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/tur"
+        android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"

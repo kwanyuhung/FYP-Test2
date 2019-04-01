@@ -30,6 +30,7 @@ public class Tutorial_Page extends AppCompatActivity {
         setContentView(R.layout.activity_select_turtorial);
 
 
+
         InputStream inputStream = null;
         try {
             inputStream = getAssets().open("user_db.json");
