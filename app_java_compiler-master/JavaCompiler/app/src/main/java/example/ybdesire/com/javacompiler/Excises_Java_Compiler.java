@@ -151,7 +151,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                             connection.setDoOutput(true);
                             connection.setRequestMethod("POST");
-                            connection.setRequestProperty("Content-Type", "application/Utils_Access");
+                            connection.setRequestProperty("Content-Type", "application/json");
 
 
                             String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + script +
