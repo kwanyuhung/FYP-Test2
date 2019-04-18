@@ -23,7 +23,8 @@ import example.ybdesire.com.javacompiler.Json.Utils_Access;
 
 public abstract class Json_Data_Get extends Utils_Access {
 
-    public static List<String> get(String json_value, InputStream inputStream){
+
+    public static String tryget(InputStream inputStream) {
         String json_toSring = null;
         try {
 //            inputStream = getAssets().open("user_db.json");
@@ -36,8 +37,14 @@ public abstract class Json_Data_Get extends Utils_Access {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return json_toSring;
+    }
 
-        List<String> fyp = new ArrayList <>();
+
+    public static List<String> get(String json_value, InputStream inputStream) {
+        String json_toSring = tryget(inputStream);
+
+        List<String> fyp = new ArrayList<>();
 
         try {
             JSONObject person = new JSONObject(json_toSring);
@@ -55,7 +62,34 @@ public abstract class Json_Data_Get extends Utils_Access {
     }
 
 
-    public static boolean CheckLogin(String Json,String id,String pw){
+    public static List<String> getJsonArray(String json_value, InputStream inputStream, int count) {
+        String json_toSring = tryget(inputStream);
+
+
+        ArrayList<String> content = new ArrayList<>();
+        try {
+            JSONObject person = new JSONObject(json_toSring);
+            JSONArray infArray = person.getJSONArray("fyp");
+
+            JSONObject inf_Array = infArray.getJSONObject(count);
+            JSONArray child_Array = inf_Array.getJSONArray(json_value); //note
+            if(child_Array!=null){
+                for (int i= 0; i < child_Array.length();i++) {
+                    JSONObject contentData = child_Array.getJSONObject(i);
+
+                    content.add(contentData.getString("Content"));
+                }
+                return content;
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static boolean CheckLogin(String Json, String id, String pw) {
 
         String userID;
         String userPw;
@@ -67,7 +101,7 @@ public abstract class Json_Data_Get extends Utils_Access {
                 JSONObject inf_Array = infArray.getJSONObject(i);
                 userID = inf_Array.getString("account");
                 userPw = inf_Array.getString("account");
-                if(userID.equals(id) && userPw.equals(pw)){
+                if (userID.equals(id) && userPw.equals(pw)) {
                     return true;
                 }
             }
@@ -78,9 +112,9 @@ public abstract class Json_Data_Get extends Utils_Access {
         return false;
     }
 
-   public static List<String> FindTutorial(String Json){
+    public static List<String> FindTutorial(String Json) {
 
-        List<String> fyp = new ArrayList <>();
+        List<String> fyp = new ArrayList<>();
 
         try {
             JSONObject person = new JSONObject(Json);
@@ -97,9 +131,9 @@ public abstract class Json_Data_Get extends Utils_Access {
         return fyp;
     }
 
-    public static List<String> FindNote(String Json){
+    public static List<String> FindNote(String Json) {
 
-        List<String> fyp = new ArrayList <>();
+        List<String> fyp = new ArrayList<>();
 
         try {
             JSONObject person = new JSONObject(Json);
@@ -116,9 +150,9 @@ public abstract class Json_Data_Get extends Utils_Access {
         return fyp;
     }
 
-    public static List<String> FindExcise(String Json){
+    public static List<String> FindExcise(String Json) {
 
-        List<String> fyp = new ArrayList <>();
+        List<String> fyp = new ArrayList<>();
 
         try {
             JSONObject person = new JSONObject(Json);
@@ -135,9 +169,9 @@ public abstract class Json_Data_Get extends Utils_Access {
         return fyp;
     }
 
-    public static List<Boolean> FindClear(String Json){
+    public static List<Boolean> FindClear(String Json) {
 
-        List<Boolean> fyp = new ArrayList <>();
+        List<Boolean> fyp = new ArrayList<>();
 
         try {
             JSONObject person = new JSONObject(Json);
@@ -155,13 +189,13 @@ public abstract class Json_Data_Get extends Utils_Access {
     }
 
 
-   public static String[] ToArray(List<String> List){
-       String[] result =  new String[List.size()];
+    public static String[] ToArray(List<String> List) {
+        String[] result = new String[List.size()];
 
-       for(int i = 0 ; i< List.size();i++){
-           result[i] = List.get(i);
-       }
+        for (int i = 0; i < List.size(); i++) {
+            result[i] = List.get(i);
+        }
 
-       return  result;
-   }
+        return result;
+    }
 }

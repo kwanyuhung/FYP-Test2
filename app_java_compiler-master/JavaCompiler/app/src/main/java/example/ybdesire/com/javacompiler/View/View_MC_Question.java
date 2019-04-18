@@ -72,7 +72,6 @@ public class View_MC_Question extends AppCompatActivity {
                     updateScore(mScore);
                     updateQuestion();
                     //Toast.makeText(View_MC_Question.this,"correct",Toast.LENGTH_SHORT).show();
-
                 }else{
                     Toast.makeText(View_MC_Question.this,"wrong",Toast.LENGTH_SHORT).show();
                     mButtonChoice2.setBackgroundColor(Color.parseColor("#B71C1C"));
