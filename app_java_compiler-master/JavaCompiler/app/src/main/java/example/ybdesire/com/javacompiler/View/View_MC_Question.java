@@ -1,5 +1,6 @@
 package example.ybdesire.com.javacompiler.View;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 import example.ybdesire.com.javacompiler.JsonFile.Question_Data;
+import example.ybdesire.com.javacompiler.Note_Page;
 import example.ybdesire.com.javacompiler.R;
 
 public class View_MC_Question extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class View_MC_Question extends AppCompatActivity {
     private Button mButtonChoice2;
     private Button mButtonChoice3;
 
-    private String mAnswer;
+    private String mAnswer ="";
     private int mScore = 0;
     private int mQuestionNumber = 0;
 
@@ -54,7 +56,7 @@ public class View_MC_Question extends AppCompatActivity {
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mButtonChoice1.getText() == mAnswer) {
+                if (mButtonChoice1.getText().toString().equals(mAnswer)) {
                     mScore = mScore += 1;
                     updateScore(mScore);
                     updateQuestion();
@@ -71,7 +73,7 @@ public class View_MC_Question extends AppCompatActivity {
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mButtonChoice2.getText() == mAnswer) {
+                if (mButtonChoice2.getText().toString().equals(mAnswer)) {
                     mScore = mScore += 1;
                     updateScore(mScore);
                     updateQuestion();
@@ -86,7 +88,7 @@ public class View_MC_Question extends AppCompatActivity {
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mButtonChoice3.getText() == mAnswer) {
+                if (mButtonChoice3.getText().toString().equals(mAnswer)) {
                     mScore = mScore += 1;
                     updateScore(mScore);
                     updateQuestion();
@@ -106,32 +108,31 @@ public class View_MC_Question extends AppCompatActivity {
             String Question = Json_Data_Get.getJsonArray_MC_Question("MultipleChoice", getAssets().open("user_db.json"), getInListView, mQuestionNumber);
             mQuestionView.setText(Question);
 
-            String Choice0 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), mQuestionNumber, 0);
-            String Choice1 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), mQuestionNumber, 1);
-            String Choice2 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), mQuestionNumber, 2);
+            String Choice0 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), getInListView, 0,mQuestionNumber);
+            String Choice1 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), getInListView, 1,mQuestionNumber);
+            String Choice2 = Json_Data_Get.getJsonArray_MC_Choice("MultipleChoice", getAssets().open("user_db.json"), getInListView, 2,mQuestionNumber);
 
             mButtonChoice1.setText(Choice0);
             mButtonChoice2.setText(Choice1);
             mButtonChoice3.setText(Choice2);
 
             mAnswer = Json_Data_Get.getJsonArray_MC_answer("MultipleChoice", getAssets().open("user_db.json"), getInListView, mQuestionNumber);
-            Log.e("String", "kwan  choice" + mButtonChoice1.getText());
-            Log.e("String", "kwan  choice" + mButtonChoice2.getText());
-            Log.e("String", "kwan  choice" + mButtonChoice3.getText());
-
-
-            Log.e("string", "kwan ans   " + mAnswer);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Toast.makeText(View_MC_Question.this, "correct", Toast.LENGTH_SHORT).show();
-
-        if (mQuestionNumber < 4) {
-            mQuestionNumber += 1;
+        if (mQuestionNumber != 0) {
+            if(mQuestionNumber == 3){
+                EndQuestion();
+            }else {
+                Toast.makeText(View_MC_Question.this, "correct", Toast.LENGTH_SHORT).show();
+            }
         }
 
+
+
+            mQuestionNumber += 1;
     }
 
 
@@ -144,11 +145,16 @@ public class View_MC_Question extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                // yourMethod();
+                back();
             }
         }, 1000);
     }
 
+
+    public void back(){
+        Intent intent = new Intent(this, Note_Page.class);
+        startActivity(intent);
+    }
 
     private void updateScore(int point) {
         mScoreView.setText("" + mScore);

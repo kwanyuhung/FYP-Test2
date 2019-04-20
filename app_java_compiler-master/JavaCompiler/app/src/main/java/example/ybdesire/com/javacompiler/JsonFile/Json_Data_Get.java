@@ -136,7 +136,7 @@ public abstract class Json_Data_Get extends Utils_Access {
         return null;
     }
 
-    public static String getJsonArray_MC_Choice(String json_value, InputStream inputStream, int count, int getchoice) {
+    public static String getJsonArray_MC_Choice(String json_value, InputStream inputStream, int count, int getchoice,int questioncount) {
         String json_toSring = tryget(inputStream);
 
 
@@ -146,14 +146,10 @@ public abstract class Json_Data_Get extends Utils_Access {
             JSONArray infArray = person.getJSONArray("fyp");
 
             JSONObject inf_Array = infArray.getJSONObject(count);
-
             JSONArray child_Array = inf_Array.getJSONArray(json_value); //MultipleChoice
-            JSONObject j = child_Array.getJSONObject(count);
+            JSONObject j = child_Array.getJSONObject(questioncount);
             JSONArray child = j.getJSONArray("choice");
-            Log.e("chioic", "kwanyuhung child "+child.toString());
             choice = child.getJSONObject(getchoice).getString("select");
-
-            Log.e("chioic", "kwanyuhung "+choice +"  " +count +" "+getchoice);
 
             return choice;
 
