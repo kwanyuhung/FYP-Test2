@@ -73,14 +73,89 @@ public abstract class Json_Data_Get extends Utils_Access {
 
             JSONObject inf_Array = infArray.getJSONObject(count);
             JSONArray child_Array = inf_Array.getJSONArray(json_value); //note
-            if(child_Array!=null){
-                for (int i= 0; i < child_Array.length();i++) {
+            if (child_Array != null) {
+                for (int i = 0; i < child_Array.length(); i++) {
                     JSONObject contentData = child_Array.getJSONObject(i);
 
                     content.add(contentData.getString("Content"));
                 }
                 return content;
             }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getJsonArray_MC_Question(String json_value, InputStream inputStream, int count, int getQuestion) {
+        String json_toSring = tryget(inputStream);
+
+
+        String Question = "";
+        try {
+            JSONObject person = new JSONObject(json_toSring);
+            JSONArray infArray = person.getJSONArray("fyp");
+
+            JSONObject inf_Array = infArray.getJSONObject(count);
+
+            JSONArray child_Array = inf_Array.getJSONArray(json_value); //MultipleChoice
+
+            JSONObject j = child_Array.getJSONObject(getQuestion);
+            Question = j.getString("question");
+
+            return Question;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getJsonArray_MC_answer(String json_value, InputStream inputStream, int count, int answerint) {
+        String json_toSring = tryget(inputStream);
+
+
+        String answer = "";
+        try {
+            JSONObject person = new JSONObject(json_toSring);
+            JSONArray infArray = person.getJSONArray("fyp");
+
+            JSONObject inf_Array = infArray.getJSONObject(count);
+
+            JSONArray child_Array = inf_Array.getJSONArray(json_value); //MultipleChoice
+
+            JSONObject j = child_Array.getJSONObject(answerint);
+            answer = j.getString("answer");
+
+            return answer;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getJsonArray_MC_Choice(String json_value, InputStream inputStream, int count, int getchoice) {
+        String json_toSring = tryget(inputStream);
+
+
+        String choice = "";
+        try {
+            JSONObject person = new JSONObject(json_toSring);
+            JSONArray infArray = person.getJSONArray("fyp");
+
+            JSONObject inf_Array = infArray.getJSONObject(count);
+
+            JSONArray child_Array = inf_Array.getJSONArray(json_value); //MultipleChoice
+            JSONObject j = child_Array.getJSONObject(count);
+            JSONArray child = j.getJSONArray("choice");
+            Log.e("chioic", "kwanyuhung child "+child.toString());
+            choice = child.getJSONObject(getchoice).getString("select");
+
+            Log.e("chioic", "kwanyuhung "+choice +"  " +count +" "+getchoice);
+
+            return choice;
 
         } catch (JSONException e) {
             e.printStackTrace();
