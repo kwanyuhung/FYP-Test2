@@ -75,11 +75,74 @@
     {
       "id": "2",
       "Tutorial": "Basic Syntax",
-      "note": "test2",
+      "note": [
+        {
+          "Content": "Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World."
+        },
+        {
+          "Content": "R.drawable.pet"
+        },
+        {
+          "Content": "dddasdas"
+        },
+        {
+          "Content": "R.drawable.pet"
+        },
+        {
+          "Content": "R.drawable.pet"
+        }
+      ],
       "excise": "",
       "tips": "",
       "ans": "",
-      "clear": true
+      "clear": true,
+      "MultipleChoice": [
+        {
+          "question": "If i want to print out\n [I Love OU FYP], what i should do?",
+          "choice": [
+            {
+              "select": "System(I Love OU FYP).out.print;"
+            },
+            {
+              "select": "System.print.out(\"I Love OU FYP\");"
+            },
+            {
+              "select": "System.out.print(\"I Love OU FYP\");"
+            }
+          ],
+          "answer": "System.out.print(\"I Love OU FYP\");"
+        },
+        {
+          "question": "What is the output of\nSystem.out.print(\"iiiiiiiiiiii\\n\");\nSystem.out.print(\"iiiiiiiiiiii\");\n",
+          "choice": [
+            {
+              "select": "iiiiiiiiiiiiiiiiiiiiiiii"
+            },
+            {
+              "select": "iiiiiiiiiiii\niiiiiiiiiiii"
+            },
+            {
+              "select": "i"
+            }
+          ],
+          "answer": "iiiiiiiiiiii\niiiiiiiiiiii"
+        },
+        {
+          "question": "What is the output of\nint x = 3;\nint y = 5;\nSystem.out.print(\"x\"+\"y\");",
+          "choice": [
+            {
+              "select": "8"
+            },
+            {
+              "select": "x+y"
+            },
+            {
+              "select": "xy"
+            }
+          ],
+          "answer": "xy"
+        }
+      ]
     },
     {
       "id": "3",
