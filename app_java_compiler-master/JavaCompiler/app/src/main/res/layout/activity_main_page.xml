@@ -10,12 +10,14 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/compiler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/js" />
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/tutorial"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,12 +32,14 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/work"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/workchart" />
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

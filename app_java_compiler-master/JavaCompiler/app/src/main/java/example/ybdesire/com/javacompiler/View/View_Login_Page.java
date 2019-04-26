@@ -37,7 +37,7 @@ public class View_Login_Page extends AppCompatActivity {
     private AppCompatButton login_button;
 
     public void openListView() {
-        Intent intent = new Intent(this, Tutorial_Page.class);
+        Intent intent = new Intent(this, View_Main_page.class);
         startActivity(intent);
     }
 
