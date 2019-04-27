@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +9,6 @@
         android:id="@+id/button_tab"
         android:layout_width="67dp"
         android:layout_height="35dp"
-        android:layout_below="@id/excise"
         android:text="@string/tab"
         android:textAllCaps="false"
         android:textSize="12sp" />
@@ -19,7 +17,6 @@
         android:id="@+id/button_println"
         android:layout_width="67dp"
         android:layout_height="35dp"
-        android:layout_below="@id/excise"
         android:layout_toEndOf="@id/button_tab"
         android:layout_toRightOf="@id/button_tab"
         android:text="@string/println"
@@ -30,7 +27,6 @@
         android:id="@+id/button_quote"
         android:layout_width="67dp"
         android:layout_height="35dp"
-        android:layout_below="@id/excise"
         android:layout_toEndOf="@id/button_println"
         android:layout_toRightOf="@id/button_println"
         android:text='"'
@@ -41,7 +37,6 @@
         android:id="@+id/button_semi"
         android:layout_width="67dp"
         android:layout_height="35dp"
-        android:layout_below="@id/excise"
         android:layout_toEndOf="@id/button_quote"
         android:layout_toRightOf="@id/button_quote"
         android:text=';'
@@ -73,19 +68,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:text="@string/str_btn_run"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
-
-
-    <Button
-        android:id="@+id/tips"
-        android:layout_width="101dp"
-        android:layout_height="43dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@id/button_compile"
-        android:layout_toLeftOf="@id/button_compile"
-        android:text="Tips"
+        android:text="Run"
         android:textAllCaps="false"
         android:textSize="18sp" />
 

@@ -1,4 +1,4 @@
-package example.ybdesire.com.javacompiler;
+package example.ybdesire.com.javacompiler.View;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,23 +23,21 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
-import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
+import example.ybdesire.com.javacompiler.CodeEditText;
+import example.ybdesire.com.javacompiler.R;
 
-public class Excises_Java_Compiler extends AppCompatActivity {
+public class View_Main_Compiler extends AppCompatActivity {
 
-    private boolean questionClick = false;
-
-    public  String Tojson(String T){
-        if(T!=null){
-            T= T.replaceAll("\n","");
-            T= T.replaceAll("\"","\\\\\"");
+    public String To_json(String T) {
+        if (T != null) {
+            T = T.replaceAll("\n", "");
+            T = T.replaceAll("\"", "\\\\\"");
         }
         return T;
     }
 
-    private void setText(final TextView text,final String value){
+    private void setText(final TextView text, final String value) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -52,89 +49,41 @@ public class Excises_Java_Compiler extends AppCompatActivity {
     private int Question = 0;
 
 
-    public  void checkAnswer(String answer){
-        try {
-            String result = DBConnector.executeQuery("SELECT fyp.note FROM user.fyp where id = " + findViewById(R.id.txt_output).toString());
-            JSONArray jsonArray = new JSONArray(result);
-            JSONObject jsonData = jsonArray.getJSONObject(0);
-        } catch(Exception e) {
-            Log.e("log_tag", e.toString());
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
-       /* //AdMob
-        MobileAds.initialize(this, "ca-app-pub-8100413825150401/1420343090");
-        AdView mAdView;
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Question = extras.getInt("Qustion");
-            //The key argument here must match that used in the other activity
-        }
-
-
-        final TextView question = (TextView) findViewById(R.id.excise);
-
-        question.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(questionClick){
-                    question.setHeight(question.getHeight()+200);
-                    questionClick = false;
-                }else {
-                    question.setHeight(question.getHeight()-200);
-                    questionClick = true;
-                }
-            }
-        });
-
-
-
-
-        try {
-            List<String> Tutorial = Json_Data_Get.get("note",getAssets().open("user_db.json"));
-            question.setText(Tutorial.get(Question));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        setContentView(R.layout.activity_main_page_compiler);
 
         //Edit Text
         final AppCompatEditText editText = (AppCompatEditText) findViewById(R.id.text_input_code);
 
         //Buttons
-        Button btn=findViewById(R.id.button_tab);
+        Button btn = findViewById(R.id.button_tab);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "    ");
             }
         });
-        btn=findViewById(R.id.button_println);
+        btn = findViewById(R.id.button_println);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "System.out.println(  )");
             }
         });
-        btn=findViewById(R.id.button_quote);
+        btn = findViewById(R.id.button_quote);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "\"");
             }
         });
-        btn=findViewById(R.id.button_semi);
+        btn = findViewById(R.id.button_semi);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), ";");
             }
         });
         // compile
-        btn=findViewById(R.id.button_compile);
+        btn = findViewById(R.id.button_compile);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Thread thread = new Thread(new Runnable() {
@@ -144,7 +93,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                         String clientId = "f953642289eac0b6c09700acf13933d4"; //Replace with your client ID
                         String clientSecret = "64d5319179ab4d1ae770f77f5719466720cbbf20e13ec317111c47583e979d35"; //Replace with your client Secret
                         String text = editText.getText().toString();
-                        String script = Tojson(text);
+                        String script = To_json(text);
                         String language = "java";
                         String versionIndex = "2";
                         try {
@@ -177,8 +126,8 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                                 try {
                                     Jsonparam = new JSONObject(output);
                                     Object JoutputJ = Jsonparam.get("output");
-                                    TextView txtOutput=findViewById(R.id.txt_output);
-                                    setText(txtOutput,JoutputJ.toString());
+                                    TextView txtOutput = findViewById(R.id.txt_output);
+                                    setText(txtOutput, JoutputJ.toString());
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -187,18 +136,17 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
 
                             connection.disconnect();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                            catch (MalformedURLException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                     }
                 });
 
                 thread.start();
                 //disable button and modify color
-                Button btnc=findViewById(R.id.button_compile);
+                Button btnc = findViewById(R.id.button_compile);
                 btnc.setClickable(false);
                 btnc.setBackgroundColor(Color.GRAY);
 
@@ -208,7 +156,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Do something after 5s = 5000ms
-                        Button btncc=findViewById(R.id.button_compile);
+                        Button btncc = findViewById(R.id.button_compile);
                         btncc.setClickable(true);
                         btncc.setBackgroundResource(android.R.drawable.btn_default);
                     }
@@ -226,10 +174,9 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int start, int count, int after) {
-                
 
-                if(cs.toString().substring(start,start+1).equals(" "))
-                {
+
+                if (cs.toString().substring(start, start + 1).equals(" ")) {
                     //Log.d("onTextChanged", "get space");
                     /*
                     SpannableString ss = new SpannableString(cs.toString());

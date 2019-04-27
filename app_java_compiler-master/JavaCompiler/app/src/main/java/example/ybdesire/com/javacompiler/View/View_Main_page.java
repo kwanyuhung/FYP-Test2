@@ -2,13 +2,11 @@ package example.ybdesire.com.javacompiler.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
-import example.ybdesire.com.javacompiler.Note_Page;
 import example.ybdesire.com.javacompiler.R;
 import example.ybdesire.com.javacompiler.Tutorial_Page;
 
@@ -25,45 +23,20 @@ public class View_Main_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        Button gomuitplechoice = findViewById(R.id.tutorial);
-        gomuitplechoice.setOnClickListener(new View.OnClickListener() {
+        ImageButton compiler = findViewById(R.id.compiler);
+        compiler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openListView(Note_Page.class);
+                openListView(View_Main_Compiler.class);
             }
         });
 
-//        Button compiler = findViewById(R.id.button_compiler);
-//        compiler.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openListView();
-//            }
-//        });
-
-//        Button tutorial = findViewById(R.id.tutorial);
-//        tutorial.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openListView(Tutorial_Page.class);
-//            }
-//        });
-
-
-//        Button work = findViewById(R.id.work);
-//        work.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               openListView();
-//            }
-//        });
-
-//        Button my_information = findViewById(R.id.information);
-//        my_information.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openListView();
-//            }
-//        });
+        ImageButton tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openListView(Tutorial_Page.class);
+            }
+        });
     }
 }

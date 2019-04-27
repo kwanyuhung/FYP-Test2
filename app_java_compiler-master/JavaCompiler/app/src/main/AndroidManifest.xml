@@ -26,6 +26,7 @@
         <activity android:name=".View.View_Gen_Example" />
         <activity android:name=".View.View_MC_Question" />
         <activity android:name=".View.View_Main_page" />
+        <activity android:name=".View.View_Main_Compiler" />
     </application>
 
 </manifest>
