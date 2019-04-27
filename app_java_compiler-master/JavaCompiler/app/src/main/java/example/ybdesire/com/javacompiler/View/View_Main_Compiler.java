@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,6 +83,7 @@ public class View_Main_Compiler extends AppCompatActivity {
                 editText.getText().insert(editText.getSelectionStart(), ";");
             }
         });
+
         // compile
         btn = findViewById(R.id.button_compile);
         btn.setOnClickListener(new View.OnClickListener() {

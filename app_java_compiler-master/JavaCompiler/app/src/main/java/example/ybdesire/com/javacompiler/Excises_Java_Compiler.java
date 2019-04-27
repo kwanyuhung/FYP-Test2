@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +28,7 @@ import java.net.URL;
 import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
+import example.ybdesire.com.javacompiler.View.View_Main_Compiler;
 
 public class Excises_Java_Compiler extends AppCompatActivity {
 
@@ -52,16 +54,6 @@ public class Excises_Java_Compiler extends AppCompatActivity {
     private int Question = 0;
 
 
-    public  void checkAnswer(String answer){
-        try {
-            String result = DBConnector.executeQuery("SELECT fyp.note FROM user.fyp where id = " + findViewById(R.id.txt_output).toString());
-            JSONArray jsonArray = new JSONArray(result);
-            JSONObject jsonData = jsonArray.getJSONObject(0);
-        } catch(Exception e) {
-            Log.e("log_tag", e.toString());
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,26 +73,9 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
 
         final TextView question = (TextView) findViewById(R.id.excise);
-
-        question.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(questionClick){
-                    question.setHeight(question.getHeight()+200);
-                    questionClick = false;
-                }else {
-                    question.setHeight(question.getHeight()-200);
-                    questionClick = true;
-                }
-            }
-        });
-
-
-
-
         try {
-            List<String> Tutorial = Json_Data_Get.get("note",getAssets().open("user_db.json"));
-            question.setText(Tutorial.get(Question));
+            List<String> Tutorial = Json_Data_Get.get("excise",getAssets().open("user_db.json"));
+            question.setText("\t\t"+Tutorial.get(Question));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +83,11 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         //Edit Text
         final AppCompatEditText editText = (AppCompatEditText) findViewById(R.id.text_input_code);
 
+
+
         //Buttons
+
+
         Button btn=findViewById(R.id.button_tab);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -133,6 +112,36 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                 editText.getText().insert(editText.getSelectionStart(), ";");
             }
         });
+
+        btn = findViewById(R.id.tips);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String tips = Json_Data_Get.getbyint("tips",getAssets().open("user_db.json"),Question);
+                    Toast.makeText(Excises_Java_Compiler.this,tips,Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+        final Button Onoff=findViewById(R.id.question_On_Off);
+        Onoff.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(questionClick){
+                    question.setVisibility(View.VISIBLE);
+                    Onoff.setText("Close Question");
+                    questionClick = false;
+                }else {
+                    question.setVisibility(View.GONE);
+                    Onoff.setText("Open Question");
+                    questionClick = true;
+                }
+            }
+        });
+
         // compile
         btn=findViewById(R.id.button_compile);
         btn.setOnClickListener(new View.OnClickListener() {
