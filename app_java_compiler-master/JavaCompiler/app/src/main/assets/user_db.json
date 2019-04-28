@@ -2,22 +2,43 @@
   "fyp": [
     {
       "id": "1",
-      "Tutorial": "Print",
+      "Tutorial": "Hello, World!",
       "note": [
         {
-          "Content": "Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World."
+          "Content": "Java is an object oriented language (OOP). Java objects are part of so-called \"Java classes\".\n\nLet's go over the Hello world program, which simply prints \"Hello, World!\" to the screen."
         },
         {
-          "Content": "R.drawable.pet"
+          "Content": "R.drawable.hello_1"
         },
         {
-          "Content": "dddasdas"
+          "Content": "The first line defines a class called Main."
         },
         {
-          "Content": "R.drawable.pet"
+          "Content": "R.drawable.hello_2"
         },
         {
-          "Content": "R.drawable.pet"
+          "Content": "In Java, every line of code that can actually run needs to be inside a class. This line declares a class named Main, which is public, that means that any other class can access it. This is not important for now, so don't worry. For now, we'll just write our code in a class called Main, and talk about objects later on.\n\nNotice that when we declare a public class, we must declare it inside a file with the same name (Main.java), otherwise we'll get an error when compiling.\n\nWhen running the examples on the site, we will not use the public keyword, since we write all our code in one file.\n\nThe next line is:"
+        },
+        {
+          "Content": "R.drawable.hello_3"
+        },
+        {
+          "Content": "This is the entry point of our Java program. the main method has to have this exact signature in order to be able to run our program."
+        },
+        {
+          "Content": "R.drawable.hello_4"
+        },
+        {
+          "Content": "The arguments we get inside the method are the arguments that we will get when running the program with parameters. It's an array of strings. We will use it in our next lesson, so don't worry if you don't understand it all now."
+        },
+        {
+          "Content": "R.drawable.hello_5"
+        },
+        {
+          "Content": "R.drawable.hello_6"
+        },
+        {
+          "Content": "Now you can try with mc question or exercise"
         }
       ],
       "excise": "now try to print the \"hello is me\" in the output",
@@ -74,7 +95,7 @@
     },
     {
       "id": "2",
-      "Tutorial": "Basic Syntax",
+      "Tutorial": "Variables and Types",
       "note": [
         {
           "Content": "Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World."
@@ -146,7 +167,7 @@
     },
     {
       "id": "3",
-      "Tutorial": "Object and Classes",
+      "Tutorial": "Conditionals",
       "note": "test3",
       "excise": "",
       "tips": "",
@@ -155,7 +176,7 @@
     },
     {
       "id": "4",
-      "Tutorial": "Constructors",
+      "Tutorial": "Arrays",
       "note": "tes4",
       "excise": "",
       "tips": "",
@@ -164,7 +185,7 @@
     },
     {
       "id": "5",
-      "Tutorial": "Basic Datatypes",
+      "Tutorial": "Loops",
       "note": "tes5",
       "excise": "",
       "tips": "",
@@ -173,7 +194,25 @@
     },
     {
       "id": "6",
-      "Tutorial": "Variable Types",
+      "Tutorial": "Functions",
+      "note": "test6",
+      "excise": "",
+      "tips": "",
+      "ans": "",
+      "clear": false
+    },
+    {
+      "id": "7",
+      "Tutorial": "Objects",
+      "note": "test6",
+      "excise": "",
+      "tips": "",
+      "ans": "",
+      "clear": false
+    },
+    {
+      "id": "8",
+      "Tutorial": "Compiling and Running with Arguments",
       "note": "test6",
       "excise": "",
       "tips": "",
