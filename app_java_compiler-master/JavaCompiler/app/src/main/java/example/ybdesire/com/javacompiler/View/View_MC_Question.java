@@ -43,7 +43,8 @@ public class View_MC_Question extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            getInListView = extras.getInt("Question");
+            getInListView = extras.getInt("question");
+            Log.e("question ", "kwan "+getInListView);
         }
 
         mScoreView = (TextView) findViewById(R.id.score);

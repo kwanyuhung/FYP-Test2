@@ -61,8 +61,8 @@ public class Front_Page extends AppCompatActivity {
         setContentView(R.layout.activity_front_page);
 
 
-        findViews();
-        setListeners();
+//        findViews();
+//        setListeners();
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
@@ -84,32 +84,32 @@ public class Front_Page extends AppCompatActivity {
             }
         });
 
-        Button gen = (Button) findViewById(R.id.Gen);
-        gen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Gen();
-            }
-        });
+//        Button gen = (Button) findViewById(R.id.Gen);
+//        gen.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Gen();
+//            }
+//        });
 
-        Button MC = (Button) findViewById(R.id.MC);
-        MC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MChoice();
-            }
-        });
+//        Button MC = (Button) findViewById(R.id.MC);
+//        MC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                MChoice();
+//            }
+//        });
 
     }
 
     private Button button_get_record;
 
-    private void findViews() {
-        button_get_record = (Button) findViewById(R.id.Login);
-    }
+//    private void findViews() {
+//        button_get_record = (Button) findViewById(R.id.Login);
+//    }
 
     private void setListeners() {
-        button_get_record.setOnClickListener(getDBRecord);
+//        button_get_record.setOnClickListener(getDBRecord);
     }
 
     private Button.OnClickListener getDBRecord = new Button.OnClickListener() {

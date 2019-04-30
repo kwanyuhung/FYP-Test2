@@ -1,5 +1,6 @@
 package example.ybdesire.com.javacompiler;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,13 +28,13 @@ import java.net.URL;
 import java.util.List;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
-import example.ybdesire.com.javacompiler.View.View_Main_Compiler;
+import example.ybdesire.com.javacompiler.View.View_MC_Question;
 
 public class Excises_Java_Compiler extends AppCompatActivity {
 
     private boolean questionClick = false;
 
-    public  String Tojson(String T){
+    public String Tojson(String T) {
         if(T!=null){
             T= T.replaceAll("\n","");
             T= T.replaceAll("\"","\\\\\"");
@@ -51,8 +51,21 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         });
     }
 
+    public String getAnswer(int num) {
+        String ans = "";
+        try {
+            ans = Json_Data_Get.get("answer", getAssets().open("user_db.json")).get(num);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ans;
+    }
     private int Question = 0;
 
+    public void back(){
+        Intent intent = new Intent(this, Note_Page.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +80,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Question = extras.getInt("Qustion");
+            Question = extras.getInt("question");
             //The key argument here must match that used in the other activity
         }
 
@@ -142,7 +155,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
             }
         });
 
-        // compile
+        // compile btn = button
         btn=findViewById(R.id.button_compile);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -220,6 +233,27 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                         Button btncc=findViewById(R.id.button_compile);
                         btncc.setClickable(true);
                         btncc.setBackgroundResource(android.R.drawable.btn_default);
+
+                        TextView txtOutput=findViewById(R.id.txt_output);
+                        Log.e("debug", "kwan "+txtOutput.getText().toString());
+                        Log.e("debug", "kwan " + getAnswer(Question));
+                        if(txtOutput.getText().toString().contains(getAnswer(Question))){
+                            Toast.makeText(Excises_Java_Compiler.this, "Correct", Toast.LENGTH_SHORT).show();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    back();
+                                }
+                            }, 1000);
+                        }else {
+                            try {
+                                String tips = Json_Data_Get.getbyint("tips",getAssets().open("user_db.json"),Question);
+                                Toast.makeText(Excises_Java_Compiler.this,tips,Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                     }
                 }, 5000);
 
@@ -261,7 +295,6 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("DBG", "kwan afterTextChanged");
                 editText.removeTextChangedListener(this);
                 String str = editText.getText().toString();
 

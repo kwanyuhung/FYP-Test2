@@ -64,7 +64,7 @@ public class Tutorial_Page extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Toast 快顯功能 第三個參數 Toast.LENGTH_SHORT 2秒  LENGTH_LONG 5秒
-            Toast.makeText(Tutorial_Page.this,"點選第 "+(position +1) +" 個 \n內容："+position, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(Tutorial_Page.this,"點選第 "+(position +1) +" 個 \n內容："+position, Toast.LENGTH_SHORT).show();
             openListView(position);
         }
     };

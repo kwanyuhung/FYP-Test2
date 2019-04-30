@@ -6,45 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".Front_Page">
 
-    <Button
-        android:id="@+id/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="18dp"
-        android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/user_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<Button-->
+    <!--android:id="@+id/Login"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginStart="31dp"-->
+    <!--android:layout_marginLeft="31dp"-->
+    <!--android:layout_marginTop="91dp"-->
+    <!--android:layout_marginBottom="18dp"-->
+    <!--android:text="Login"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/user_list"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
-        android:id="@+id/Gen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="18dp"
-        android:text="Gen"
-        app:layout_constraintBottom_toTopOf="@+id/user_list"
-        app:layout_constraintLeft_toRightOf="@id/Login" />
+    <!--<Button-->
+    <!--android:id="@+id/Gen"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginStart="31dp"-->
+    <!--android:layout_marginLeft="31dp"-->
+    <!--android:layout_marginTop="91dp"-->
+    <!--android:layout_marginBottom="18dp"-->
+    <!--android:text="Gen"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/user_list"-->
+    <!--app:layout_constraintLeft_toRightOf="@id/Login" />-->
 
-    <Button
-        android:id="@+id/MC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="18dp"
-        android:text="MC"
-        app:layout_constraintBottom_toTopOf="@+id/user_list"
-        app:layout_constraintLeft_toRightOf="@id/Gen" />
+    <!--<Button-->
+    <!--android:id="@+id/MC"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginStart="31dp"-->
+    <!--android:layout_marginLeft="31dp"-->
+    <!--android:layout_marginTop="91dp"-->
+    <!--android:layout_marginBottom="18dp"-->
+    <!--android:text="MC"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/user_list"-->
+    <!--app:layout_constraintLeft_toRightOf="@id/Gen" />-->
 
     <!--<TextView-->
         <!--android:id="@+id/String_output"-->
@@ -58,20 +58,20 @@
         <!--app:layout_constraintTop_toTopOf="parent"-->
         <!--app:layout_constraintVertical_bias="1.0" />-->
 
-    <TableLayout
-        android:id="@+id/user_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="240dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login" />
+    <!--<TableLayout-->
+    <!--android:id="@+id/user_list"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_marginStart="14dp"-->
+    <!--android:layout_marginLeft="14dp"-->
+    <!--android:layout_marginEnd="14dp"-->
+    <!--android:layout_marginRight="14dp"-->
+    <!--android:layout_marginBottom="240dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.0"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/Login" />-->
 
 
     <Button
@@ -91,13 +91,12 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="174dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="251dp"
-        android:textSize="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+
+        android:textSize="50dp"
         android:text="Learn Java"
         app:layout_constraintBottom_toTopOf="@+id/button_tab"
         app:layout_constraintEnd_toEndOf="parent"

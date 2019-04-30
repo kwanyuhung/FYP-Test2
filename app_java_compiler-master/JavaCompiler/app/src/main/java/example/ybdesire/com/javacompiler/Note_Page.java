@@ -80,13 +80,13 @@ public class Note_Page extends AppCompatActivity {
 
     public void openListView() {
         Intent intent = new Intent(this, Excises_Java_Compiler.class);
-        intent.putExtra("Qustion", getInListView);
+        intent.putExtra("question", getInListView);
         startActivity(intent);
     }
 
     public void MChoice() {
         Intent intent = new Intent(this, View_MC_Question.class);
-        intent.putExtra("Qustion", getInListView);
+        intent.putExtra("question", getInListView);
         startActivity(intent);
     }
 

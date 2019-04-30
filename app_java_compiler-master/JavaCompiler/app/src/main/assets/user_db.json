@@ -43,7 +43,7 @@
       ],
       "excise": "now try to print the \"hello is me\" in the output",
       "tips": "you may change the world between println(\"//you world here//\");",
-      "ans": "hello is me",
+      "answer": "hello is me",
       "clear": false,
       "MultipleChoice": [
         {
@@ -97,72 +97,12 @@
       "id": "2",
       "Tutorial": "Variables and Types",
       "note": [
-        {
-          "Content": "Declare a class with name A.Declare the main method\npublic static void main(String args[]){\nNow Type the \nSystem.out.println(\"Hello World\"); \nwhich displays the text Hello World."
-        },
-        {
-          "Content": "R.drawable.pet"
-        },
-        {
-          "Content": "dddasdas"
-        },
-        {
-          "Content": "R.drawable.pet"
-        },
-        {
-          "Content": "R.drawable.pet"
-        }
       ],
       "excise": "",
       "tips": "",
-      "ans": "",
+      "answer": "",
       "clear": true,
       "MultipleChoice": [
-        {
-          "question": "If i want to print out\n [I Love OU FYP], what i should do?",
-          "choice": [
-            {
-              "select": "System(I Love OU FYP).out.print;"
-            },
-            {
-              "select": "System.print.out(\"I Love OU FYP\");"
-            },
-            {
-              "select": "System.out.print(\"I Love OU FYP\");"
-            }
-          ],
-          "answer": "System.out.print(\"I Love OU FYP\");"
-        },
-        {
-          "question": "What is the output of\nSystem.out.print(\"iiiiiiiiiiii\\n\");\nSystem.out.print(\"iiiiiiiiiiii\");\n",
-          "choice": [
-            {
-              "select": "iiiiiiiiiiiiiiiiiiiiiiii"
-            },
-            {
-              "select": "iiiiiiiiiiii\niiiiiiiiiiii"
-            },
-            {
-              "select": "i"
-            }
-          ],
-          "answer": "iiiiiiiiiiii\niiiiiiiiiiii"
-        },
-        {
-          "question": "What is the output of\nint x = 3;\nint y = 5;\nSystem.out.print(\"x\"+\"y\");",
-          "choice": [
-            {
-              "select": "8"
-            },
-            {
-              "select": "x+y"
-            },
-            {
-              "select": "xy"
-            }
-          ],
-          "answer": "xy"
-        }
       ]
     },
     {
@@ -186,11 +126,116 @@
     {
       "id": "5",
       "Tutorial": "Loops",
-      "note": "tes5",
-      "excise": "",
-      "tips": "",
-      "ans": "",
-      "clear": false
+      "note": [
+        {
+          "Content": "There are two kind of loops in Java, for and while.\n\nFor\nThe for loop has three sections:"
+        },
+        {
+          "Content": "R.drawable.loop_1"
+        },
+        {
+          "Content": "First section runs once when we enter the loop.\n\nSecond section is the gate keeper, if it returns true, we run the statements in the loop, if it returns false, we exit the loop. It runs right after the first section for the first time, then every time the loop is finished and the third section is run.\n\nThe third section is the final statement that will run every time the loop runs.\n\nSo in the case we have just seen, the loop will run 3 times. Here is the order of the commands:"
+        },
+        {
+          "Content": "R.drawable.loop_2"
+        },
+        {
+          "Content": "We can omit the first and third section of the loop (although it will be weird), and the loop will still work:"
+        },
+        {
+          "Content": "R.drawable.loop_3"
+        },
+        {
+          "Content": "For cases where we want to use a loop that look like that, we use a while loop\n\nWhile\nThe syntax is very similar to the previous for we looked at:"
+        },
+        {
+          "Content": "R.drawable.loop_4"
+        },
+        {
+          "Content": "The condition will run for the first time when entering and every time the loop is done. If it returns false, the loop will not run.\n\nIf we want the loop to always run at least one, we can use do-while"
+        },
+        {
+          "Content": "R.drawable.loop_5"
+        },
+        {
+          "Content": "Notice the ; in the end of the do-while.\n\nForeach\nAnother version of for, is the foreach. The keyword we use is still for, but when we want to iterate on the elements inside an array we can simply use it:"
+        },
+        {
+          "Content": "R.drawable.loop_6"
+        },
+        {
+          "Content": "This is a short version and equivalent to:"
+        },
+        {
+          "Content": "R.drawable.loop_7"
+        },
+        {
+          "Content": "Notice that if you want to use the index of the element inside the loop, you have to use the longer version and can't use foreach.\n\nbreak and continue\nThese two keywords help us control the loop from within it. break will cause the loop to stop and will go immediately to the next statement after the loop:"
+        },
+        {
+          "Content": "R.drawable.loop_8"
+        },
+        {
+          "Content": "continue will stop the current iteration and will move to the next one. Notice that inside a for loop, it will still run the third section."
+        },
+        {
+          "Content": "R.drawable.loop_9"
+        },
+        {
+          "Content": "Now you can try with mc question or exercise"
+        }
+      ],
+      "excise": "Random",
+      "tips": "you can try to use nested loops, it mean you can add a inner loop in loop",
+      "answer": "Random",
+      "clear": false,
+      "MultipleChoice": [
+        {
+          "question": "what will be the output of the following program?\n\n public\nclass Test { \npublic\n    static void main(String[] args) \n    { \n        for (int i = 0; i < 10; i++) \n            int x = 10; \n    } \n} ",
+          "choice": [
+            {
+              "select": "No Output"
+            },
+            {
+              "select": "10"
+            },
+            {
+              "select": "Compile time error"
+            }
+          ],
+          "answer": "Compile time error"
+        },
+        {
+          "question": "what will be the output of the following program?\n\n public\nclass Test { \npublic\n    static void main(String[] args) \n    { \n        int i = 0; \n        for (System.out.println(\"HI\"); i < 1; i++) \n            System.out.println(\"HELLO GEEKS\"); \n    } \n} ",
+          "choice": [
+            {
+              "select": "HI\nHELLO GEEKS"
+            },
+            {
+              "select": "No Output"
+            },
+            {
+              "select": "HELLO GEEKS"
+            }
+          ],
+          "answer": "HI\nHELLO GEEKS"
+        },
+        {
+          "question": "what will be the output of the following program?\n\n public\nclass Test { \npublic\n    static void main(String[] args) \n    { \n        for (int i = 0; i < 1; System.out.println(\"WELCOME\")) \n            System.out.println(\"GEEKS\"); \n    } \n} ",
+          "choice": [
+            {
+              "select": "GEEKS\nWELCOME\nGEEKS"
+            },
+            {
+              "select": "Compile time error"
+            },
+            {
+              "select": "GEEKS WELCOME(Infinitely)"
+            }
+          ],
+          "answer": "GEEKS WELCOME(Infinitely)"
+        }
+      ]
     },
     {
       "id": "6",
@@ -223,8 +268,8 @@
   "user": [
     {
       "id": "0",
-      "account": "meme000",
-      "pwd": "meme"
+      "account": "user",
+      "pwd": "ouhk"
     },
     {
       "id": "1",

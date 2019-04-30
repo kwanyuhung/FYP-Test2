@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Java Compiler</string>
+    <string name="app_name">Learn Java</string>
     <string name="str_btn_run">Run</string>
     <string name="str_txt_output">Output</string>
     <string name="err_network">Y=Internet fail</string>
