@@ -61,6 +61,28 @@ public abstract class Json_Data_Get extends Utils_Access {
         return fyp;
     }
 
+    public static void setComplete(String json_value, InputStream inputStream) {
+        String json_toSring = tryget(inputStream);
+
+        try {
+            Log.e("try","kwan start ");
+            JSONObject person = new JSONObject(json_toSring);
+            Log.e("try","kwan start2 ");
+            JSONArray infArray = person.getJSONArray("fyp");
+            Log.e("try","kwan start3 ");
+            for (int i = 0; i < infArray.length(); i++) {
+                Log.e("try","kwan start4 lopp");
+                JSONObject inf_Array = infArray.getJSONObject(i);
+                Log.e("try","kwan start5 lopp");
+                inf_Array.put("clear",true);
+                Log.e("try","kwan puted");
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static String getbyint(String json_value, InputStream inputStream, int num) {
         String json_toSring = tryget(inputStream);

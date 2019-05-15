@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -51,6 +52,16 @@ public class View_Login_Page extends AppCompatActivity {
 
         status = (AppCompatTextView)findViewById(R.id.status);
 
+
+        try {
+            List<String> list = Json_Data_Get.get("clear", getAssets().open("user_db.json"));
+            Log.e("s","kwan test1 "+list.toString());
+            Json_Data_Get.setComplete("clear", getAssets().open("user_db.json"));
+            List<String> list2 = Json_Data_Get.get("clear", getAssets().open("user_db.json"));
+            Log.e("s","kwan test2 "+list2.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        Button create_user = (Button)findViewById(R.id.create_user);
 //        create_user.setOnClickListener(new View.OnClickListener() {

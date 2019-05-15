@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.io.IOException;
+import java.util.List;
+
+import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 import example.ybdesire.com.javacompiler.R;
 import example.ybdesire.com.javacompiler.Tutorial_Page;
 
