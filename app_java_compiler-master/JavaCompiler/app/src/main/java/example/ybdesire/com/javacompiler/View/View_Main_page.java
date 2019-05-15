@@ -31,6 +31,14 @@ public class View_Main_page extends AppCompatActivity {
             }
         });
 
+        ImageButton performance = findViewById(R.id.work);
+        performance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openListView(View_performance.class);
+            }
+        });
+
         ImageButton tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override

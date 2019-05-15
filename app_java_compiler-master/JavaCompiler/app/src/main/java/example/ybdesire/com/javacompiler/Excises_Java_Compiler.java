@@ -26,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 
 import example.ybdesire.com.javacompiler.JsonFile.Json_Data_Get;
 import example.ybdesire.com.javacompiler.View.View_MC_Question;
@@ -33,16 +34,17 @@ import example.ybdesire.com.javacompiler.View.View_MC_Question;
 public class Excises_Java_Compiler extends AppCompatActivity {
 
     private boolean questionClick = false;
+    private boolean gen = false;
 
     public String Tojson(String T) {
-        if(T!=null){
-            T= T.replaceAll("\n","");
-            T= T.replaceAll("\"","\\\\\"");
+        if (T != null) {
+            T = T.replaceAll("\n", "");
+            T = T.replaceAll("\"", "\\\\\"");
         }
         return T;
     }
 
-    private void setText(final TextView text,final String value){
+    private void setText(final TextView text, final String value) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -60,9 +62,10 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         }
         return ans;
     }
+
     private int Question = 0;
 
-    public void back(){
+    public void back() {
         Intent intent = new Intent(this, Note_Page.class);
         startActivity(intent);
     }
@@ -87,8 +90,28 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
         final TextView question = (TextView) findViewById(R.id.excise);
         try {
-            List<String> Tutorial = Json_Data_Get.get("excise",getAssets().open("user_db.json"));
-            question.setText("\t\t"+Tutorial.get(Question));
+            List<String> Tutorial = Json_Data_Get.get("excise", getAssets().open("user_db.json"));
+            if (Tutorial.get(Question).equals("Random")) {
+                gen = true;
+                Random r = new Random();
+                char c = (char) (r.nextInt(26) + 'a');
+
+                //rect
+                int width = r.nextInt(6) + 5; // 5 -10
+                int height = r.nextInt(6) + 5;
+
+                StringBuilder Rect = new StringBuilder();
+
+                for (int w = 1; w <= width; w++) {
+                    for (int h = 1; h <= height; h++) {
+                        Rect.append(String.valueOf(c));
+                    }
+                    Rect.append("\n");
+                }
+                question.setText(Rect);
+            } else {
+                question.setText("\t\t" + Tutorial.get(Question));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,29 +120,28 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         final AppCompatEditText editText = (AppCompatEditText) findViewById(R.id.text_input_code);
 
 
-
         //Buttons
 
 
-        Button btn=findViewById(R.id.button_tab);
+        Button btn = findViewById(R.id.button_tab);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "    ");
             }
         });
-        btn=findViewById(R.id.button_println);
+        btn = findViewById(R.id.button_println);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "System.out.println(  )");
             }
         });
-        btn=findViewById(R.id.button_quote);
+        btn = findViewById(R.id.button_quote);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), "\"");
             }
         });
-        btn=findViewById(R.id.button_semi);
+        btn = findViewById(R.id.button_semi);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 editText.getText().insert(editText.getSelectionStart(), ";");
@@ -131,8 +153,8 @@ public class Excises_Java_Compiler extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    String tips = Json_Data_Get.getbyint("tips",getAssets().open("user_db.json"),Question);
-                    Toast.makeText(Excises_Java_Compiler.this,tips,Toast.LENGTH_SHORT).show();
+                    String tips = Json_Data_Get.getbyint("tips", getAssets().open("user_db.json"), Question);
+                    Toast.makeText(Excises_Java_Compiler.this, tips, Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -140,14 +162,14 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         });
 
 
-        final Button Onoff=findViewById(R.id.question_On_Off);
+        final Button Onoff = findViewById(R.id.question_On_Off);
         Onoff.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(questionClick){
+                if (questionClick) {
                     question.setVisibility(View.VISIBLE);
                     Onoff.setText("Close Question");
                     questionClick = false;
-                }else {
+                } else {
                     question.setVisibility(View.GONE);
                     Onoff.setText("Open Question");
                     questionClick = true;
@@ -156,7 +178,7 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         });
 
         // compile btn = button
-        btn=findViewById(R.id.button_compile);
+        btn = findViewById(R.id.button_compile);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Thread thread = new Thread(new Runnable() {
@@ -199,8 +221,8 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                                 try {
                                     Jsonparam = new JSONObject(output);
                                     Object JoutputJ = Jsonparam.get("output");
-                                    TextView txtOutput=findViewById(R.id.txt_output);
-                                    setText(txtOutput,JoutputJ.toString());
+                                    TextView txtOutput = findViewById(R.id.txt_output);
+                                    setText(txtOutput, JoutputJ.toString());
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -209,18 +231,17 @@ public class Excises_Java_Compiler extends AppCompatActivity {
 
 
                             connection.disconnect();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                            catch (MalformedURLException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                     }
                 });
 
                 thread.start();
                 //disable button and modify color
-                Button btnc=findViewById(R.id.button_compile);
+                Button btnc = findViewById(R.id.button_compile);
                 btnc.setClickable(false);
                 btnc.setBackgroundColor(Color.GRAY);
 
@@ -230,14 +251,16 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Do something after 5s = 5000ms
-                        Button btncc=findViewById(R.id.button_compile);
+                        Button btncc = findViewById(R.id.button_compile);
                         btncc.setClickable(true);
                         btncc.setBackgroundResource(android.R.drawable.btn_default);
 
-                        TextView txtOutput=findViewById(R.id.txt_output);
-                        Log.e("debug", "kwan "+txtOutput.getText().toString());
+                        TextView txtOutput = findViewById(R.id.txt_output);
+                        Log.e("debug", "kwan " + txtOutput.getText().toString());
                         Log.e("debug", "kwan " + getAnswer(Question));
-                        if(txtOutput.getText().toString().contains(getAnswer(Question))){
+
+                        if (txtOutput.getText().toString().contains(getAnswer(Question)) == true ||
+                          txtOutput.getText().toString().contains(question.getText().toString())) {
                             Toast.makeText(Excises_Java_Compiler.this, "Correct", Toast.LENGTH_SHORT).show();
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
@@ -245,10 +268,10 @@ public class Excises_Java_Compiler extends AppCompatActivity {
                                     back();
                                 }
                             }, 1000);
-                        }else {
+                        } else {
                             try {
-                                String tips = Json_Data_Get.getbyint("tips",getAssets().open("user_db.json"),Question);
-                                Toast.makeText(Excises_Java_Compiler.this,tips,Toast.LENGTH_SHORT).show();
+                                String tips = Json_Data_Get.getbyint("tips", getAssets().open("user_db.json"), Question);
+                                Toast.makeText(Excises_Java_Compiler.this, tips, Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -269,10 +292,9 @@ public class Excises_Java_Compiler extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int start, int count, int after) {
-                
 
-                if(cs.toString().substring(start,start+1).equals(" "))
-                {
+
+                if (cs.toString().substring(start, start + 1).equals(" ")) {
                     //Log.d("onTextChanged", "get space");
                     /*
                     SpannableString ss = new SpannableString(cs.toString());

@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="My Performance"
+        android:textSize="30dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/Basic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Basic"
+        android:textColor="#00D842"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_marginHorizontal="50dp"
+        android:layout_below="@id/Basic"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/complete_img"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@id/Basic"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/complete" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/complete_per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Basic"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="40dp"
+        android:text="Complete 12%"
+        android:textSize="30dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/complete_img"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Middle"
+        android:textColor="#FF8300"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_marginHorizontal="50dp"
+        android:layout_below="@id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/complete_img1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@id/middle"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/complete" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/complete_per1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/middle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="40dp"
+        android:text="not try yet        "
+        android:textSize="30dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/hard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/complete_img1"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Hard"
+        android:textColor="#FF2929"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_marginHorizontal="50dp"
+        android:layout_below="@id/hard"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/complete_img2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@id/hard"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/complete" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/complete_per2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hard"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="40dp"
+        android:text="not try yet        "
+        android:textSize="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="6dp"
+        android:text="Back"/>
+
+</RelativeLayout>
